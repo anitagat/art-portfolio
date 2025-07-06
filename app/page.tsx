@@ -72,8 +72,8 @@ export default function ArtistPortfolio() {
     {
       id: 1,
       title: "Liquid Dreams",
-      medium: "Acrylic on Canvas",
-      year: "2024",
+      medium: "Oil on Canvas",
+      year: "2019",
       dimensions: "60 × 80 cm",
       image: "/images/liquid.jpg",
       description:
@@ -84,7 +84,7 @@ export default function ArtistPortfolio() {
       id: 2,
       title: "Amore e Psiche",
       medium: "Watercolor on Paper",
-      year: "2024",
+      year: "2022",
       dimensions: "40 × 50 cm",
       image: "/images/amore-psiche.png",
       description: "A watercolor interpretation of classical themes, blending natural forms with emotional expression.",
@@ -329,46 +329,48 @@ export default function ArtistPortfolio() {
       </section>
 
       {/* Exhibitions Section */}
+      {/* 
       <section id="exhibitions" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light italic mb-12 text-center">Recent Exhibitions</h2>
 
           <div className="space-y-8">
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Fluid Expressions</h3>
-                  <p className="text-gray-600 mb-2">Galleria Moderna, Milan</p>
-                  <p className="text-gray-500">Solo Exhibition</p>
-                </div>
-                <span className="text-gray-500 mt-2 md:mt-0">2024</span>
-              </div>
+        <div className="border-b border-gray-200 pb-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+          <h3 className="text-xl font-medium mb-2">Fluid Expressions</h3>
+          <p className="text-gray-600 mb-2">Galleria Moderna, Milan</p>
+          <p className="text-gray-500">Solo Exhibition</p>
             </div>
+            <span className="text-gray-500 mt-2 md:mt-0">2024</span>
+          </div>
+        </div>
 
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Contemporary Voices</h3>
-                  <p className="text-gray-600 mb-2">Palazzo delle Esposizioni, Rome</p>
-                  <p className="text-gray-500">Group Exhibition</p>
-                </div>
-                <span className="text-gray-500 mt-2 md:mt-0">2023</span>
-              </div>
+        <div className="border-b border-gray-200 pb-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+          <h3 className="text-xl font-medium mb-2">Contemporary Voices</h3>
+          <p className="text-gray-600 mb-2">Palazzo delle Esposizioni, Rome</p>
+          <p className="text-gray-500">Group Exhibition</p>
             </div>
+            <span className="text-gray-500 mt-2 md:mt-0">2023</span>
+          </div>
+        </div>
 
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start">
-                <div>
-                  <h3 className="text-xl font-medium mb-2">Color and Form</h3>
-                  <p className="text-gray-600 mb-2">Arte Contemporanea, Florence</p>
-                  <p className="text-gray-500">Solo Exhibition</p>
-                </div>
-                <span className="text-gray-500 mt-2 md:mt-0">2023</span>
-              </div>
+        <div className="border-b border-gray-200 pb-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+          <h3 className="text-xl font-medium mb-2">Color and Form</h3>
+          <p className="text-gray-600 mb-2">Arte Contemporanea, Florence</p>
+          <p className="text-gray-500">Solo Exhibition</p>
             </div>
+            <span className="text-gray-500 mt-2 md:mt-0">2023</span>
+          </div>
+        </div>
           </div>
         </div>
       </section>
+      */}
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-gray-900 text-white">
