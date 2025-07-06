@@ -5,56 +5,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, Instagram, Mail, ArrowDown } from "lucide-react"
-import { useActionState } from "react"
 
 export default function ArtistPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
-  const [contactState, contactAction, isContactPending] = useActionState(
-    async (_state: { success: boolean; message: string }, formData: FormData) => {
-      
-      // Simulate processing time
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      const name = formData.get("name") as string
-      const email = formData.get("email") as string
-      const subject = formData.get("subject") as string
-      const message = formData.get("message") as string
-      const inquiryType = formData.get("inquiryType") as string
-
-      // Basic validation
-      if (!name || !email || !message) {
-        return { success: false, message: "Please fill in all required fields." }
-      }
-
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!emailRegex.test(email)) {
-        return { success: false, message: "Please enter a valid email address." }
-      }
-
-      // In a real application, you would:
-      // 1. Send an email using a service like Resend, SendGrid, or Nodemailer
-      // 2. Save the inquiry to a database
-      // 3. Send confirmation emails to both the client and artist
-
-      console.log("Contact form submission:", {
-        name,
-        email,
-        subject,
-        message,
-        inquiryType,
-        timestamp: new Date().toISOString(),
-      })
-
-      return {
-        success: true,
-        message: `Thank you ${name}! Your ${inquiryType.toLowerCase()} inquiry has been received. I'll get back to you within 24-48 hours.`,
-      }
-    },
-    { success: false, message: "" }
-  )
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -65,7 +20,30 @@ export default function ArtistPortfolio() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    contactAction(formData)
+    const name = formData.get("name") as string
+    const email = formData.get("email") as string
+    const subject = formData.get("subject") as string
+    const message = formData.get("message") as string
+    const inquiryType = formData.get("inquiryType") as string
+
+    // Basic validation
+    if (!name || !email || !message) {
+      alert("Please fill in all required fields.")
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.")
+      return
+    }
+
+    // Construct mailto link
+    const mailto = `mailto:anita.gattei@gmail.com?subject=${encodeURIComponent(subject || inquiryType)}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nType of Inquiry: ${inquiryType}\n\n${message}`
+    )}`
+    window.location.href = mailto
   }
 
   const basePath = '/art-portfolio';
@@ -245,8 +223,8 @@ export default function ArtistPortfolio() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('${basePath}/images/liquid.jpg')`,
-            opacity: 0.12, // High opacity for minimalism
-            filter: 'grayscale(100%)',
+            opacity: 0.9, // High opacity for minimalism
+            filter: 'grayscale(60%)',
           }}
         />
         <div className="absolute inset-0 bg-[#0a1931]/80" />
@@ -258,7 +236,7 @@ export default function ArtistPortfolio() {
             Contemporary Visual Art
           </h2>
           <p className="text-lg md:text-xl font-display text-white/80 mb-12 max-w-2xl mx-auto">
-            Minimal forms. Deep emotion. Elegant colour.
+             Natural elements echoing through colourful dreams.
           </p>
           <Button
             variant="outline"
@@ -459,7 +437,7 @@ export default function ArtistPortfolio() {
             <div className="bg-gray-800 p-8 rounded-lg">
               <h3 className="text-2xl font-light mb-6 font-display">Send a Message</h3>
 
-              <form action={contactAction} className="space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -535,19 +513,10 @@ export default function ArtistPortfolio() {
 
                 <Button
                   type="submit"
-                  disabled={isContactPending}
                   className="w-full bg-white text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed py-3 text-lg font-medium"
                 >
-                  {isContactPending ? "Sending Message..." : "Send Message"}
+                  Send Message
                 </Button>
-
-                {contactState && (
-                  <div
-                    className={`p-4 rounded-lg ${contactState.success ? "bg-green-900/50 border border-green-700" : "bg-red-900/50 border border-red-700"}`}
-                  >
-                    <p className={contactState.success ? "text-green-200" : "text-red-200"}>{contactState.message}</p>
-                  </div>
-                )}
               </form>
             </div>
           </div>
