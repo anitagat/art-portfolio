@@ -96,7 +96,7 @@ export default function ArtistPortfolio() {
       id: 3,
       title: "Recognition",
       medium: "Oil on Canvas",
-      year: "2023",
+      year: "2018",
       dimensions: "50 × 50 cm",
       image:  `${basePath}/images/recognition.jpg`,
       description: "Colorfoul and dynamic brushstrokes.",
@@ -106,7 +106,7 @@ export default function ArtistPortfolio() {
       id: 4,
       title: "Botanical Studies",
       medium: "Oil on Canvas",
-      year: "2023",
+      year: "2019",
       dimensions: "20 × 15 cm",
       image: `${basePath}/images/sicily.jpg`,
       description: "Intimate studies of natural forms, exploring the relationship between color and organic structure.",
@@ -116,7 +116,7 @@ export default function ArtistPortfolio() {
       id: 5,
       title: "Birth of the Cosmos",
       medium: "Oil on Canvas",
-      year: "2024",
+      year: "2020",
       dimensions: "50 × 40 cm",
       image:  `${basePath}/images/birthofcosmos.jpg`,
       description: "A dialogue between form and color, exploring the boundaries of abstract expression.",
@@ -126,7 +126,7 @@ export default function ArtistPortfolio() {
       id: 6,
       title: "Halo",
       medium: "Oil on Canvas",
-      year: "2023",
+      year: "2019",
       dimensions: "40 × 50 cm",
       image:  `${basePath}/images/halo.jpg`,
       description: "An exploration of color relationships and compositional harmony.",
@@ -136,7 +136,7 @@ export default function ArtistPortfolio() {
       id: 7,
       title: "Emotional Landscapes",
       medium: "Mixed Media",
-      year: "2024",
+      year: "2021",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/venere.jpg`,
       description: "Landscapes that reflect internal emotional states through color and form.",
@@ -146,11 +146,29 @@ export default function ArtistPortfolio() {
       id: 8,
       title: "June",
       medium: "Mixed Media",
-      year: "2023",
+      year: "2021",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/june.jpg`,
       description: "Exploring the intersection of geometric precision and organic flow.",
       gridSpan: "md:col-span-1 md:row-span-1",
+    },
+  // Add more artworks as needed
+  { id: 9, 
+    title: "Kernel", 
+    medium: "Oil on Canvas", 
+    year: "2019", 
+    dimensions: "40 × 40 cm", 
+    image: `${basePath}/images/kernel.jpg`, 
+    description: "Study of abstract forms and textures.", 
+    gridSpan: "md:col-span-1 md:row-span-1"},
+    { id: 10,
+    title: "Dendron",
+    medium: "Oil on Canvas",
+    year: "2024",
+    dimensions: "60 × 50 cm",
+    image: `${basePath}/images/dendron.jpg`,
+    description: "Oil painting capturing the essence of light and shadow.",
+    gridSpan: "md:col-span-1 md:row-span-1"
     },
   ]
 
@@ -164,19 +182,19 @@ export default function ArtistPortfolio() {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors">
+            <Link href="#gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
               Gallery
             </Link>
-            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors">
+            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
               About
             </Link>
             {/* <Link
               href="#exhibitions"
-              className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors"
+              className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
             >
               Exhibitions
             </Link> */}
-            <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors">
+            <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
               Contact
             </Link>
           </div>
@@ -189,16 +207,16 @@ export default function ArtistPortfolio() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-            <Link href="#gallery" className="block text-sm uppercase tracking-wider">
+            <Link href="#gallery" className="block text-sm uppercase tracking-wider font-display">
               Gallery
             </Link>
-            <Link href="#about" className="block text-sm uppercase tracking-wider">
+            <Link href="#about" className="block text-sm uppercase tracking-wider font-display">
               About
             </Link>
-            {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider">
+            {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider font-display">
               Exhibitions
             </Link> */}
-            <Link href="#contact" className="block text-sm uppercase tracking-wider">
+            <Link href="#contact" className="block text-sm uppercase tracking-wider font-display">
               Contact
             </Link>
           </div>
@@ -212,26 +230,31 @@ export default function ArtistPortfolio() {
           style={{
             backgroundImage: `url('${basePath}/images/liquid.jpg')`,
             transform: `translateY(${scrollY * 0.3}px)`,
+            filter: 'blur(2px) brightness(0.8)',
           }}
         />
-        <div className="absolute inset-0 bg-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-transparent" />
 
         <div className="relative z-10 text-center text-gray-900 max-w-4xl mx-auto px-6">
-          <h1 className="text-5xl md:text-7xl font-light italic mb-6 leading-none">Contemporary</h1>
-          <h2 className="text-3xl md:text-5xl font-light mb-8 leading-none">Visual Art</h2>
-          <p className="text-lg md:text-xl font-light tracking-wide mb-12 max-w-2xl mx-auto">
-            Exploring the intersection of color, form, and emotion through contemporary painting and mixed media
+          <h1 className="text-6xl md:text-8xl font-display italic mb-4 leading-tight bg-gradient-to-r from-fuchsia-600 via-rose-400 to-indigo-600 bg-clip-text text-transparent drop-shadow-lg animate-fade-in-up">
+            Art as Liquid Poetry
+          </h1>
+          <h2 className="text-3xl md:text-5xl font-display font-light mb-8 leading-none text-gray-700/90 drop-shadow-md animate-fade-in-up delay-200">
+            by Anita Gattei
+          </h2>
+          <p className="text-xl md:text-2xl font-light tracking-wide mb-12 max-w-2xl mx-auto text-gray-700/80 animate-fade-in-up delay-300">
+            Where color, form, and emotion flow together in contemporary painting and mixed media.
           </p>
           <Button
             variant="outline"
             size="lg"
-            className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 bg-transparent"
+            className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 bg-transparent font-display text-lg shadow-lg animate-fade-in-up delay-500"
           >
             View Portfolio
           </Button>
         </div>
 
-        <div className="absolute bottom-8 right-8 text-gray-700 text-sm tracking-wider">
+        <div className="absolute bottom-8 right-8 text-gray-700 text-sm tracking-wider animate-fade-in-up delay-700">
           <div className="flex items-center space-x-2">
             <ArrowDown className="w-4 h-4" />
             <span>Scroll to explore</span>
@@ -243,8 +266,8 @@ export default function ArtistPortfolio() {
       <section id="gallery" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light italic mb-6">Selected Works</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6">Selected Works</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display">
               A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the
               relationship between abstract and figurative expression.
             </p>
@@ -284,8 +307,8 @@ export default function ArtistPortfolio() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-light italic mb-8">About the Artist</h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-display italic mb-8">About the Artist</h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-display">
                 <p>
                   Anita Gattei is a contemporary visual artist whose work explores the dynamic relationship between
                   color, form, and emotional expression. Working primarily in acrylics, watercolors, and mixed media,
@@ -296,12 +319,11 @@ export default function ArtistPortfolio() {
                   Her work is characterized by bold color palettes, organic flowing forms, and a deep exploration of the
                   psychological aspects of visual perception.
                 </p>
-              
               </div>
 
               <div className="mt-8 space-y-4">
-                <h3 className="text-xl font-medium">Education</h3>
-                <div className="text-gray-600 space-y-2">
+                <h3 className="text-xl font-medium font-display">Education</h3>
+                <div className="text-gray-600 space-y-2 font-display">
                   <p>...</p>
                   <p>...</p>
                 </div>
@@ -311,13 +333,13 @@ export default function ArtistPortfolio() {
             <div className="relative">
               <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src={`${basePath}/images/DSC01937.JPG`}
                   alt="studio"
                   fill
                   className="object-cover"
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-4 italic">Elena in her Florence studio, 2024</p>
+              <p className="text-sm text-gray-500 mt-4 italic">Anita, 2023</p>
             </div>
           </div>
         </div>
@@ -371,8 +393,8 @@ export default function ArtistPortfolio() {
       <section id="contact" className="py-20 px-6 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light italic mb-8">Get in Touch</h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-8">Get in Touch</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto font-display">
               For inquiries about available works, commissions, or exhibition opportunities, please don't hesitate to
               reach out.
             </p>
@@ -382,7 +404,7 @@ export default function ArtistPortfolio() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-light mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-light mb-6 font-display">Contact Information</h3>
                 <div className="space-y-4">
                   <a
                     href="mailto:elena@elenarossi.art"
@@ -402,7 +424,7 @@ export default function ArtistPortfolio() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-light mb-4">Studio Location</h3>
+                <h3 className="text-2xl font-light mb-4 font-display">Studio Location</h3>
                 <p className="text-gray-300 leading-relaxed">
                   Italy
                   <br />
@@ -411,7 +433,7 @@ export default function ArtistPortfolio() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-light mb-4">Commission Process</h3>
+                <h3 className="text-2xl font-light mb-4 font-display">Commission Process</h3>
                 <p className="text-gray-300 leading-relaxed">
                   I welcome commission inquiries for original paintings and mixed media works. Each piece is created in
                   close collaboration with the client to ensure a meaningful and personal artistic experience.
@@ -421,7 +443,7 @@ export default function ArtistPortfolio() {
 
             {/* Contact Form */}
             <div className="bg-gray-800 p-8 rounded-lg">
-              <h3 className="text-2xl font-light mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-light mb-6 font-display">Send a Message</h3>
 
               <form action={contactAction} className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -519,7 +541,7 @@ export default function ArtistPortfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-black text-white text-center">
+      <footer className="py-8 px-6 bg-black text-white text-center font-display">
         <p className="text-sm text-gray-400">© 2025 Anita Gattei. All rights reserved.</p>
       </footer>
 
