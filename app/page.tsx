@@ -68,6 +68,8 @@ export default function ArtistPortfolio() {
     contactAction(formData)
   }
 
+  const basePath = '/art-portfolio';
+
   const artworks = [
     {
       id: 1,
@@ -75,7 +77,7 @@ export default function ArtistPortfolio() {
       medium: "Oil on Canvas",
       year: "2019",
       dimensions: "60 × 80 cm",
-      image: "/images/liquid.jpg",
+      image: `${basePath}/images/liquid.jpg`,
       description:
         "An exploration of fluid movement and vibrant color interactions, capturing the essence of liquid motion in static form.",
       gridSpan: "md:col-span-2 md:row-span-2",
@@ -86,7 +88,7 @@ export default function ArtistPortfolio() {
       medium: "Watercolor on Paper",
       year: "2022",
       dimensions: "40 × 50 cm",
-      image: "/images/amore-psiche.png",
+      image: `${basePath}/images/amore-psiche.png`,
       description: "A watercolor interpretation of classical themes, blending natural forms with emotional expression.",
       gridSpan: "md:col-span-1 md:row-span-2",
     },
@@ -168,12 +170,12 @@ export default function ArtistPortfolio() {
             <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors">
               About
             </Link>
-            <Link
+            {/* <Link
               href="#exhibitions"
               className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors"
             >
               Exhibitions
-            </Link>
+            </Link> */}
             <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors">
               Contact
             </Link>
@@ -193,9 +195,9 @@ export default function ArtistPortfolio() {
             <Link href="#about" className="block text-sm uppercase tracking-wider">
               About
             </Link>
-            <Link href="#exhibitions" className="block text-sm uppercase tracking-wider">
+            {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider">
               Exhibitions
-            </Link>
+            </Link> */}
             <Link href="#contact" className="block text-sm uppercase tracking-wider">
               Contact
             </Link>
@@ -208,7 +210,7 @@ export default function ArtistPortfolio() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/liquid.jpg')`,
+            backgroundImage: `url('${basePath}/images/liquid.jpg')`,
             transform: `translateY(${scrollY * 0.3}px)`,
           }}
         />
@@ -285,30 +287,23 @@ export default function ArtistPortfolio() {
               <h2 className="text-4xl md:text-5xl font-light italic mb-8">About the Artist</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Elena Rossi is a contemporary visual artist whose work explores the dynamic relationship between
+                  Anita Gattei is a contemporary visual artist whose work explores the dynamic relationship between
                   color, form, and emotional expression. Working primarily in acrylics, watercolors, and mixed media,
                   her paintings capture the fluid nature of human experience through abstract and semi-figurative
                   compositions.
                 </p>
                 <p>
-                  Born and raised in Italy, Elena's artistic journey began with classical training in traditional
-                  techniques, which she has evolved to create a distinctive contemporary voice. Her work is
-                  characterized by bold color palettes, organic flowing forms, and a deep exploration of the
+                  Her work is characterized by bold color palettes, organic flowing forms, and a deep exploration of the
                   psychological aspects of visual perception.
                 </p>
-                <p>
-                  Elena's paintings have been exhibited in galleries across Europe and North America, and her work is
-                  held in private collections internationally. She continues to push the boundaries of contemporary
-                  painting while maintaining a deep connection to the emotional and spiritual aspects of artistic
-                  creation.
-                </p>
+              
               </div>
 
               <div className="mt-8 space-y-4">
                 <h3 className="text-xl font-medium">Education</h3>
                 <div className="text-gray-600 space-y-2">
-                  <p>MFA in Fine Arts, Accademia di Belle Arti, Florence (2018)</p>
-                  <p>BA in Visual Arts, Università degli Studi, Rome (2015)</p>
+                  <p>...</p>
+                  <p>...</p>
                 </div>
               </div>
             </div>
@@ -317,7 +312,7 @@ export default function ArtistPortfolio() {
               <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
                 <Image
                   src="/placeholder.svg?height=800&width=600"
-                  alt="Elena Rossi in her studio"
+                  alt="studio"
                   fill
                   className="object-cover"
                 />
@@ -394,14 +389,14 @@ export default function ArtistPortfolio() {
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>elena@elenarossi.art</span>
+                    <span>anita.gattei@gmail.com</span>
                   </a>
                   <a
                     href="https://instagram.com/elenarossi.art"
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Instagram className="w-5 h-5" />
-                    <span>@elenarossi.art</span>
+                    <span>anitagattei.art</span>
                   </a>
                 </div>
               </div>
@@ -409,7 +404,7 @@ export default function ArtistPortfolio() {
               <div>
                 <h3 className="text-2xl font-light mb-4">Studio Location</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  Florence, Italy
+                  Italy
                   <br />
                   Studio visits by appointment only
                 </p>
@@ -525,7 +520,7 @@ export default function ArtistPortfolio() {
 
       {/* Footer */}
       <footer className="py-8 px-6 bg-black text-white text-center">
-        <p className="text-sm text-gray-400">© 2024 Elena Rossi. All rights reserved.</p>
+        <p className="text-sm text-gray-400">© 2025 Anita Gattei. All rights reserved.</p>
       </footer>
 
       {/* Image Modal */}
