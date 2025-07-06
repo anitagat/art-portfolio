@@ -10,12 +10,21 @@ export default function ArtistPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
+  const [showDescription, setShowDescription] = useState(false);
+  const [zoom, setZoom] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      setShowDescription(false);
+      setZoom(1);
+    }
+  }, [selectedImageIndex])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -406,23 +415,23 @@ export default function ArtistPortfolio() {
                     <span>anita.gattei@gmail.com</span>
                   </a>
                   <a
-                    href="https://instagram.com/elenarossi.art"
+                    href="https://instagram.com/indianinkk"
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Instagram className="w-5 h-5" />
-                    <span>anitagattei.art</span>
+                    <span>indianinkk</span>
                   </a>
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <h3 className="text-2xl font-light mb-4 font-display">Studio Location</h3>
                 <p className="text-gray-300 leading-relaxed">
                   Italy
                   <br />
                   Studio visits by appointment only
                 </p>
-              </div>
+              </div> */}
 
               <div>
                 <h3 className="text-2xl font-light mb-4 font-display">Commission Process</h3>
@@ -547,14 +556,49 @@ export default function ArtistPortfolio() {
               &#8592;
             </button>
             {/* Image */}
-            <Image
-              src={artworks[selectedImageIndex].image || "/placeholder.svg"}
-              alt={artworks[selectedImageIndex].title}
-              fill
-              sizes="100vw"
-              className="object-contain max-w-full max-h-full"
-              priority
-            />
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src={artworks[selectedImageIndex].image || "/placeholder.svg"}
+                alt={artworks[selectedImageIndex].title}
+                fill
+                sizes="100vw"
+                className="object-contain max-w-full max-h-full transition-transform duration-300"
+                style={{ transform: `scale(${zoom})` }}
+                priority
+                onClick={e => e.stopPropagation()}
+              />
+              {/* Zoom Controls */}
+              <div className="absolute top-6 right-1/2 translate-x-1/2 flex gap-2 z-20">
+                <button
+                  className="bg-black/60 text-white rounded px-3 py-1 text-lg hover:bg-black/80"
+                  onClick={e => { e.stopPropagation(); setZoom(z => Math.max(1, z - 0.2)); }}
+                  aria-label="Zoom out"
+                >
+                  -
+                </button>
+                <button
+                  className="bg-black/60 text-white rounded px-3 py-1 text-lg hover:bg-black/80"
+                  onClick={e => { e.stopPropagation(); setZoom(z => Math.min(3, z + 0.2)); }}
+                  aria-label="Zoom in"
+                >
+                  +
+                </button>
+              </div>
+              {/* Description hover area */}
+              <div
+                className="absolute bottom-0 left-0 w-full h-20 cursor-pointer z-10"
+                onMouseEnter={() => setShowDescription(true)}
+                onMouseLeave={() => setShowDescription(false)}
+                onClick={e => e.stopPropagation()}
+              >
+                <div
+                  className={`w-full h-full flex justify-center items-end p-6 transition-opacity duration-300 ${showDescription ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontSize: 18, background: 'rgba(0,0,0,0.7)', color: 'white' }}
+                >
+                  {artworks[selectedImageIndex].description}
+                </div>
+              </div>
+            </div>
             {/* Right Arrow */}
             <button
               onClick={e => {
