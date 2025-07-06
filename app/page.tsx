@@ -224,37 +224,35 @@ export default function ArtistPortfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0a1931]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('${basePath}/images/liquid.jpg')`,
-            transform: `translateY(${scrollY * 0.3}px)`,
-            filter: 'blur(2px) brightness(0.8)',
+            opacity: 0.12, // High opacity for minimalism
+            filter: 'grayscale(100%)',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-transparent" />
-
-        <div className="relative z-10 text-center text-gray-900 max-w-4xl mx-auto px-6">
-          <h1 className="text-6xl md:text-8xl font-display italic mb-4 leading-tight bg-gradient-to-r from-fuchsia-600 via-rose-400 to-indigo-600 bg-clip-text text-transparent drop-shadow-lg animate-fade-in-up">
-            Art as Liquid Poetry
+        <div className="absolute inset-0 bg-[#0a1931]/80" />
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+          <h1 className="text-6xl md:text-8xl font-display font-bold mb-4 text-white tracking-tight drop-shadow-lg" style={{letterSpacing: '0.01em'}}>
+            Anita Gattei
           </h1>
-          <h2 className="text-3xl md:text-5xl font-display font-light mb-8 leading-none text-gray-700/90 drop-shadow-md animate-fade-in-up delay-200">
-            by Anita Gattei
+          <h2 className="text-2xl md:text-4xl font-display font-light mb-8 text-[#bfc9d9] tracking-wide uppercase" style={{letterSpacing: '0.2em'}}>
+            Contemporary Visual Art
           </h2>
-          <p className="text-xl md:text-2xl font-light tracking-wide mb-12 max-w-2xl mx-auto text-gray-700/80 animate-fade-in-up delay-300">
-            Where color, form, and emotion flow together in contemporary painting and mixed media.
+          <p className="text-lg md:text-xl font-display text-white/80 mb-12 max-w-2xl mx-auto">
+            Minimal forms. Deep emotion. Elegant colour.
           </p>
           <Button
             variant="outline"
             size="lg"
-            className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 bg-transparent font-display text-lg shadow-lg animate-fade-in-up delay-500"
+            className="border-white text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-transparent font-display tracking-wider"
           >
             View Portfolio
           </Button>
         </div>
-
-        <div className="absolute bottom-8 right-8 text-gray-700 text-sm tracking-wider animate-fade-in-up delay-700">
+        <div className="absolute bottom-8 right-8 text-[#bfc9d9] text-sm tracking-wider">
           <div className="flex items-center space-x-2">
             <ArrowDown className="w-4 h-4" />
             <span>Scroll to explore</span>
@@ -309,26 +307,26 @@ export default function ArtistPortfolio() {
             <div>
               <h2 className="text-4xl md:text-5xl font-display italic mb-8">About the Artist</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-display">
-                <p>
-                  Anita Gattei is a contemporary visual artist whose work explores the dynamic relationship between
-                  color, form, and emotional expression. Working primarily in acrylics, watercolors, and mixed media,
+                <p className="text-justify">
+                  Anita is a contemporary visual artist whose work explores the dynamic relationship between
+                  color, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
                   her paintings capture the fluid nature of human experience through abstract and semi-figurative
                   compositions.
                 </p>
-                <p>
+                <p className="text-justify">
                   Her work is characterized by bold color palettes, organic flowing forms, and a deep exploration of the
                   psychological aspects of visual perception.
                 </p>
               </div>
 
-              <div className="mt-8 space-y-4">
+              {/* <div className="mt-8 space-y-4">
                 <h3 className="text-xl font-medium font-display">Education</h3>
                 <div className="text-gray-600 space-y-2 font-display">
                   <p>...</p>
                   <p>...</p>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            </div> 
 
             <div className="relative">
               <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
