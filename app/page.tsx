@@ -526,20 +526,21 @@ export default function ArtistPortfolio() {
       {/* Image Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 w-full h-full"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative w-full h-full flex items-center justify-center">
             <Image
               src={selectedImage || "/placeholder.svg"}
               alt="Artwork detail"
-              width={800}
-              height={600}
+              fill
+              sizes="100vw"
               className="object-contain max-w-full max-h-full"
+              priority
             />
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+              className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 z-10"
             >
               ×
             </button>
