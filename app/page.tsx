@@ -12,13 +12,24 @@ export default function ArtistPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [contactState, contactAction, isContactPending] = useActionState(submitContactForm, null)
+  const [contactState, contactAction, isContactPending] = useActionState(
+    async (_state: { success: boolean; message: string }, formData: FormData) => {
+      return await submitContactForm(formData)
+    },
+    { success: false, message: "" }
+  )
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    contactAction(formData)
+  }
 
   const artworks = [
     {
@@ -110,7 +121,7 @@ export default function ArtistPortfolio() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-light tracking-wide">
-            Elena<span className="font-medium">Rossi</span>
+            Anita <span className="font-medium">Gattei</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -378,7 +389,7 @@ export default function ArtistPortfolio() {
             <div className="bg-gray-800 p-8 rounded-lg">
               <h3 className="text-2xl font-light mb-6">Send a Message</h3>
 
-              <form action={contactAction} className="space-y-6">
+              <form action={contactAction} className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
