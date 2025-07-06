@@ -10,7 +10,7 @@ import { useActionState } from "react"
 export default function ArtistPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
   const [contactState, contactAction, isContactPending] = useActionState(
     async (_state: { success: boolean; message: string }, formData: FormData) => {
       
@@ -172,6 +172,22 @@ export default function ArtistPortfolio() {
     },
   ]
 
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowLeft') {
+          setSelectedImageIndex(prev => prev === 0 ? artworks.length - 1 : (prev ?? 0) - 1)
+        } else if (e.key === 'ArrowRight') {
+          setSelectedImageIndex(prev => prev === artworks.length - 1 ? 0 : (prev ?? 0) + 1)
+        } else if (e.key === 'Escape') {
+          setSelectedImageIndex(null)
+        }
+      }
+      window.addEventListener('keydown', handleKeyDown)
+      return () => window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [selectedImageIndex, artworks.length])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -273,11 +289,11 @@ export default function ArtistPortfolio() {
 
           {/* Masonry Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
-            {artworks.map((artwork) => (
+            {artworks.map((artwork, idx) => (
               <div
                 key={artwork.id}
                 className={`group relative overflow-hidden cursor-pointer ${artwork.gridSpan}`}
-                onClick={() => setSelectedImage(artwork.image)}
+                onClick={() => setSelectedImageIndex(idx)}
               >
                 <Image
                   src={artwork.image || "/placeholder.svg"}
@@ -544,26 +560,44 @@ export default function ArtistPortfolio() {
       </footer>
 
       {/* Image Modal */}
-      {selectedImage && (
+      {selectedImageIndex !== null && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 w-full h-full"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedImageIndex(null)}
         >
           <div className="relative w-full h-full flex items-center justify-center">
+            {/* Left Arrow */}
+            <button
+              onClick={e => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => prev === 0 ? artworks.length - 1 : (prev ?? 0) - 1)
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 bg-black/40 rounded-full hover:bg-black/70 z-10"
+              aria-label="Previous artwork"
+            >
+              &#8592;
+            </button>
+            {/* Image */}
             <Image
-              src={selectedImage || "/placeholder.svg"}
-              alt="Artwork detail"
+              src={artworks[selectedImageIndex].image || "/placeholder.svg"}
+              alt={artworks[selectedImageIndex].title}
               fill
               sizes="100vw"
               className="object-contain max-w-full max-h-full"
               priority
             />
+            {/* Right Arrow */}
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 z-10"
+              onClick={e => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => prev === artworks.length - 1 ? 0 : (prev ?? 0) + 1)
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 bg-black/40 rounded-full hover:bg-black/70 z-10"
+              aria-label="Next artwork"
             >
-              ×
+              &#8594;
             </button>
+            {/* Close Button */}
           </div>
         </div>
       )}
