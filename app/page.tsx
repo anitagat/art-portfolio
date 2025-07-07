@@ -247,13 +247,15 @@ export default function ArtistPortfolio() {
           <p className="text-lg md:text-xl font-display text-white/80 mb-12 max-w-2xl mx-auto">
              Natural elements echoing through colourful dreams.
           </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-white text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-transparent font-display tracking-wider"
-          >
-            View Portfolio
-          </Button>
+          <Link href="/extended-gallery">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-transparent font-display tracking-wider"
+            >
+              View Portfolio
+            </Button>
+          </Link>
         </div>
         <div className="absolute bottom-8 right-8 text-[#bfc9d9] text-sm tracking-wider">
           <div className="flex items-center space-x-2">
