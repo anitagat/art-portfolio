@@ -304,20 +304,33 @@ export default function ArtistPortfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
+      <section id="about" className="py-20 px-6 bg-gray-50 relative overflow-hidden">
+        {/* Background image with opacity and filter */}
+        <div
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: `url('${basePath}/images/diving.jpeg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.4, // Adjust for desired opacity
+            filter: 'grayscale(50%)',
+          }}
+        />
+        {/* White overlay for additional effect */}
+        <div className="absolute inset-0 w-full h-full z-10" style={{ background: 'rgba(255,255,255,0.5)' }} />
+        <div className="max-w-6xl mx-auto relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-display italic mb-8">About the Artist</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-display">
                 <p className="text-justify">
-                  Anita is a contemporary visual artist whose work explores the dynamic relationship between
+                  My work explores the dynamic relationship between
                   color, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
-                  her paintings capture the fluid nature of human experience through abstract and semi-figurative
+                  my paintings attempt to capture the fluid nature of human experience through abstract and semi-figurative
                   compositions.
                 </p>
                 <p className="text-justify">
-                  Her work is characterized by bold color palettes, organic flowing forms, and a deep exploration of the
+                  I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the
                   psychological aspects of visual perception.
                 </p>
               </div>
@@ -334,7 +347,7 @@ export default function ArtistPortfolio() {
             <div className="relative">
               <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
                 <Image
-                  src={`${basePath}/images/DSC01937.JPG`}
+                  src={`${basePath}/images/DSC01937_copia.JPG`}
                   alt="studio"
                   fill
                   className="object-cover"
