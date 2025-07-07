@@ -199,6 +199,17 @@ export default function ExtendedGallery() {
           onClick={() => setSelectedImageIndex(null)}
         >
           <div className="relative w-full h-full flex items-center justify-center">
+            {/* Exit Button */}
+            <button
+              onClick={e => {
+                e.stopPropagation();
+                setSelectedImageIndex(null);
+              }}
+              className="absolute top-6 right-6 text-white text-3xl px-3 py-1 bg-black/60 rounded-full hover:bg-black/90 z-20"
+              aria-label="Close"
+            >
+              &times;
+            </button>
             {/* Left Arrow */}
             <button
               onClick={e => {
