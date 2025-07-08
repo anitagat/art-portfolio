@@ -12,6 +12,9 @@ export default function ArtistPortfolio() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
   const [showDescription, setShowDescription] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState<{x: number, y: number} | null>(null);
+  const [offset, setOffset] = useState<{x: number, y: number}>({x: 0, y: 0});
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -57,28 +60,7 @@ export default function ArtistPortfolio() {
 
   const basePath = '/art-portfolio';
 
-  const artworks = [
-    {
-      id: 1,
-      title: "Liquid Dreams",
-      medium: "Oil on Canvas",
-      year: "2019",
-      dimensions: "60 × 80 cm",
-      image: `${basePath}/images/liquid.jpg`,
-      description:
-        "An exploration of fluid movement and vibrant color interactions, capturing the essence of liquid motion in static form.",
-      gridSpan: "md:col-span-2 md:row-span-2",
-    },
-    {
-      id: 2,
-      title: "Amore e Psiche",
-      medium: "Watercolor on Paper",
-      year: "2022",
-      dimensions: "40 × 50 cm",
-      image: `${basePath}/images/amore-psiche.png`,
-      description: "A watercolor interpretation of classical themes, blending natural forms with emotional expression.",
-      gridSpan: "md:col-span-1 md:row-span-2",
-    },
+const artworks = [
     {
       id: 3,
       title: "Recognition",
@@ -86,37 +68,58 @@ export default function ArtistPortfolio() {
       year: "2018",
       dimensions: "50 × 50 cm",
       image:  `${basePath}/images/recognition.jpg`,
-      description: "Colorfoul and dynamic brushstrokes.",
+      description: "Recognition, Oil on Canvas, 2018.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
-      id: 4,
-      title: "Botanical Studies",
+      id: 2,
+      title: "Amore e Psiche",
+      medium: "Watercolor on Paper",
+      year: "2022",
+      dimensions: "20 × 15 cm",
+      image: `${basePath}/images/amore-psiche.png`,
+      description: "Watercolour on paper, 2022.",
+      gridSpan: "md:col-span-1 md:row-span-2",
+    },
+    {
+      id: 1,
+      title: "Liquid Dreams",
       medium: "Oil on Canvas",
       year: "2019",
-      dimensions: "20 × 15 cm",
-      image: `${basePath}/images/sicily.jpg`,
-      description: "Intimate studies of natural forms, exploring the relationship between color and organic structure.",
+      dimensions: "60 × 40 cm",
+      image: `${basePath}/images/liquid.jpg`,
+      description:
+        "Liquid Dreams, Oil on Canvas, 2019.",
+      gridSpan: "md:col-span-2 md:row-span-2",
+    },
+    {
+      id: 4,
+      title: "Diving",
+      medium: "Watercolour on Paper",
+      year: "2025",
+      dimensions: "20 × 25 cm",
+      image: `${basePath}/images/diving.jpeg`,
+      description: " Diving, Watercolour on Paper, 2025.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
       id: 5,
-      title: "Birth of the Cosmos",
+      title: "Halo",
       medium: "Oil on Canvas",
       year: "2020",
       dimensions: "50 × 40 cm",
-      image:  `${basePath}/images/birthofcosmos.jpg`,
-      description: "A dialogue between form and color, exploring the boundaries of abstract expression.",
+      image:  `${basePath}/images/halo.jpg`,
+      description: "Halo, Oil on Canvas, 2019.",
       gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
       id: 6,
-      title: "Halo",
+      title: "Depths",
       medium: "Oil on Canvas",
-      year: "2019",
-      dimensions: "40 × 50 cm",
-      image:  `${basePath}/images/halo.jpg`,
-      description: "An exploration of color relationships and compositional harmony.",
+      year: "2025",
+      dimensions: "40 × 30 cm",
+      image:  `${basePath}/images/depths_copia.png`,
+      description: "Depths, Oil on Canvas, 2025.",
       gridSpan: "md:col-span-2 md:row-span-1",
     },
     {
@@ -126,7 +129,7 @@ export default function ArtistPortfolio() {
       year: "2021",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/venere.jpg`,
-      description: "Landscapes that reflect internal emotional states through color and form.",
+      description: "Emotional Landscapes, Mixed Media, 2021.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
@@ -136,7 +139,7 @@ export default function ArtistPortfolio() {
       year: "2021",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/june.jpg`,
-      description: "Exploring the intersection of geometric precision and organic flow.",
+      description: "June, Mixed Media, 2021.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
   // Add more artworks as needed
@@ -144,36 +147,71 @@ export default function ArtistPortfolio() {
     title: "Kernel", 
     medium: "Oil on Canvas", 
     year: "2019", 
-    dimensions: "40 × 40 cm", 
+    dimensions: "40 × 50 cm", 
     image: `${basePath}/images/kernel.jpg`, 
-    description: "Study of abstract forms and textures.", 
+    description: "Kernel, Oil on Canvas, 2019.", 
     gridSpan: "md:col-span-1 md:row-span-1"},
+
     { id: 10,
-    title: "Dendron",
+    title: "Birth of the Cosmos",
     medium: "Oil on Canvas",
-    year: "2024",
-    dimensions: "60 × 50 cm",
-    image: `${basePath}/images/dendron.jpg`,
-    description: "Oil painting capturing the essence of light and shadow.",
+    year: "2020",
+    dimensions: "30 × 40 cm",
+    image: `${basePath}/images/birthofcosmos.jpg`,
+    description: "Birth of the Cosmos, Oil on Canvas, 2020.",
     gridSpan: "md:col-span-1 md:row-span-1"
     },
   ]
 
+
   useEffect(() => {
-    if (selectedImageIndex !== null) {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'ArrowLeft') {
-          setSelectedImageIndex(prev => prev === 0 ? artworks.length - 1 : (prev ?? 0) - 1)
-        } else if (e.key === 'ArrowRight') {
-          setSelectedImageIndex(prev => prev === artworks.length - 1 ? 0 : (prev ?? 0) + 1)
-        } else if (e.key === 'Escape') {
-          setSelectedImageIndex(null)
-        }
+    if (selectedImageIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setSelectedImageIndex(prev =>
+          prev === 0 ? artworks.length - 1 : (prev ?? 0) - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setSelectedImageIndex(prev =>
+          prev === artworks.length - 1 ? 0 : (prev ?? 0) + 1
+        );
+      } else if (e.key === "Escape") {
+        setSelectedImageIndex(null);
+      } else if (e.key === "+" || e.key === "=") {
+        setZoom(z => Math.min(3, z + 0.2));
+      } else if (e.key === "-" || e.key === "_") {
+        setZoom(z => Math.max(1, z - 0.2));
       }
-      window.addEventListener('keydown', handleKeyDown)
-      return () => window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [selectedImageIndex, artworks.length])
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoom === 1) return;
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - offset.x, y: e.clientY - offset.y });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setOffset({
+      x: e.clientX - (dragStart?.x ?? 0),
+      y: e.clientY - (dragStart?.y ?? 0),
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    // Reset zoom and pan when modal closes or image changes
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+  }, [selectedImageIndex]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -323,11 +361,11 @@ export default function ArtistPortfolio() {
         <div className="max-w-6xl mx-auto relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-display italic mb-8">About the Artist</h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-display">
+              <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0a1931" }}>About the Artist</h2>
+                <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light">
                 <p className="text-justify">
                   My work explores the dynamic relationship between
-                  color, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
+                  colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
                   my paintings attempt to capture the fluid nature of human experience through abstract and semi-figurative
                   compositions.
                 </p>
@@ -355,7 +393,7 @@ export default function ArtistPortfolio() {
                   className="object-cover"
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-4 italic">Anita, 2023</p>
+              <p className="text-sm text-gray-500 mt-4 bold">Anita, 2023</p>
             </div>
           </div>
         </div>
@@ -458,90 +496,101 @@ export default function ArtistPortfolio() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-800 p-8 rounded-lg">
-              <h3 className="text-2xl font-light mb-6 font-display">Send a Message</h3>
+            <div className="bg-gray-800 p-8 rounded-lg relative overflow-hidden">
+              {/* Background image for the contact form */}
+              <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+              style={{
+                backgroundImage: `url('${basePath}/images/depths.jpg')`,
+                opacity: 0.15,
+                filter: 'grayscale(60%)',
+                zIndex: 0,
+              }}
+              />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-light mb-6 font-display">Send a Message</h3>
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
 
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Name *
+                    <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-300 mb-2">
+                      Type of Inquiry
+                    </label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                    >
+                      <option value="General Inquiry">General Inquiry</option>
+                      <option value="Commission Request">Commission Request</option>
+                      <option value="Purchase Inquiry">Purchase Inquiry</option>
+                      <option value="Exhibition Opportunity">Exhibition Opportunity</option>
+                      <option value="Press/Media">Press/Media</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                      Subject
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      required
+                      id="subject"
+                      name="subject"
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                      placeholder="Your full name"
+                      placeholder="Brief subject line"
                     />
                   </div>
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email *
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                      Message *
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
                       required
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                      placeholder="your.email@example.com"
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
+                      placeholder="Please describe your inquiry in detail. For commissions, include preferred size, style, timeline, and budget range."
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-300 mb-2">
-                    Type of Inquiry
-                  </label>
-                  <select
-                    id="inquiryType"
-                    name="inquiryType"
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                  <Button
+                    type="submit"
+                    className="w-full bg-white text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed py-3 text-lg font-medium"
                   >
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Commission Request">Commission Request</option>
-                    <option value="Purchase Inquiry">Purchase Inquiry</option>
-                    <option value="Exhibition Opportunity">Exhibition Opportunity</option>
-                    <option value="Press/Media">Press/Media</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                    placeholder="Brief subject line"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
-                    placeholder="Please describe your inquiry in detail. For commissions, include preferred size, style, timeline, and budget range."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-white text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed py-3 text-lg font-medium"
-                >
-                  Send Message
-                </Button>
-              </form>
+                    Send Message
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -582,16 +631,27 @@ export default function ArtistPortfolio() {
               &#8592;
             </button>
             {/* Image */}
-            <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center"
+              style={{ cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default" }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+            >
               <Image
                 src={artworks[selectedImageIndex].image || "/placeholder.svg"}
                 alt={artworks[selectedImageIndex].title}
                 fill
                 sizes="100vw"
                 className="object-contain max-w-full max-h-full transition-transform duration-300"
-                style={{ transform: `scale(${zoom})` }}
+                style={{
+                  transform: `scale(${zoom}) translate(${offset.x / zoom}px, ${offset.y / zoom}px)`,
+                  transition: isDragging ? "none" : "transform 0.3s",
+                  cursor: zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
+                }}
                 priority
                 onClick={e => e.stopPropagation()}
+                draggable={false}
               />
               {/* Zoom Controls */}
               <div className="absolute top-6 right-1/2 translate-x-1/2 flex gap-2 z-20">
