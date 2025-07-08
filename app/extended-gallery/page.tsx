@@ -32,11 +32,11 @@ const artworks = [
     id: 1,
     title: "Ben Nevis",
     medium: "Acrylics on Canvas",
-    year: "2019",
+    year: "2018",
     dimensions: "20 × 20 cm",
     image: `${basePath}/images/bennevis.jpg`,
     description:
-      "Ben Nevis, Acrylics on Canvas",
+      "Ben Nevis, Acrylics on Canvas, 2018.",
     gridSpan: "md:col-span-2 md:row-span-2",
   },
   { 
@@ -62,8 +62,8 @@ const artworks = [
   },
   { id: 6, 
     title: "Dawning",
-    medium: "Mixed Media",
-    year: "2021",
+    medium: "Oil on Canvas",
+    year: "2019",
     dimensions: "30 × 15 cm",
     image:  `${basePath}/images/dawning.jpg`,
     description: "Dawning, Oil on Canvas, 2019.",
@@ -94,7 +94,7 @@ const artworks = [
     title: "Ortensiae",
     medium: "Acrylic on Canvas",
     year: "2018",
-    dimensions: "25 × 25 cm",
+    dimensions: "24 × 24 cm",
     image: `${basePath}/images/ortensia.jpg`,
     description: "Ortensiae, Acrylic on Canvas, 2018.",
     gridSpan: "md:col-span-1 md:row-span-1",
@@ -141,12 +141,12 @@ const artworks = [
   },
   {
     id: 14,
-    title: "Botanical Studies",
+    title: "Botanical Study, Sicilian Landscape",
     medium: "Watercolour on Paper",
-    year: "201",
+    year: "2019",
     dimensions: "20 × 25 cm",
     image: `${basePath}/images/sicily.jpg`,
-    description: " Diving, Watercolour on Paper, 2025.",
+    description: " Botanical Study, Sicilian Landscape, Watercolour on Paper, 2019.",
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
@@ -211,10 +211,10 @@ const artworks = [
     id: 21,
     title: "Venere",
     medium: "Mixed Media",
-    year: "2021",
+    year: "2019",
     dimensions: "30 × 15 cm",
     image: `${basePath}/images/venere.jpg`,
-    description: "Venere, Mixed Media, 2021.",
+    description: "Venere, Mixed Media, 2019.",
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
@@ -231,10 +231,10 @@ const artworks = [
     id: 23,
     title: "Dendron",
     medium: "Oil on Canvas",
-    year: "2025",
+    year: "2024",
     dimensions: "40 × 30 cm",
     image: `${basePath}/images/dendron.jpg`,
-    description: "Dendron, Oil on Canvas, 2025.",
+    description: "Dendron, Oil on Canvas, 2024.",
     gridSpan: "md:col-span-2 md:row-span-1",
   }
 ]
@@ -295,6 +295,12 @@ export default function ExtendedGallery() {
     if (zoom === 1) setOffset({x: 0, y: 0});
   }, [zoom]);
 
+  // Reset zoom and pan when modal closes or image changes
+  useEffect(() => {
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+  }, [selectedImageIndex]);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -323,7 +329,7 @@ export default function ExtendedGallery() {
             Extended Gallery
           </h1>
           <p className="text-lg md:text-xl font-display text-white/80 mb-6 max-w-2xl mx-auto">
-            A wider gallery for curious explorers.
+            A wider gallery for curious art-lovers.
           </p>
         </div>
       </section>

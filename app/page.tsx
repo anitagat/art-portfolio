@@ -106,7 +106,7 @@ const artworks = [
       id: 5,
       title: "Halo",
       medium: "Oil on Canvas",
-      year: "2020",
+      year: "2019",
       dimensions: "50 × 40 cm",
       image:  `${basePath}/images/halo.jpg`,
       description: "Halo, Oil on Canvas, 2019.",
@@ -126,10 +126,10 @@ const artworks = [
       id: 7,
       title: "Emotional Landscapes",
       medium: "Mixed Media",
-      year: "2021",
+      year: "2019",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/venere.jpg`,
-      description: "Emotional Landscapes, Mixed Media, 2021.",
+      description: "Emotional Landscapes, Mixed Media, 2019.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
@@ -217,51 +217,76 @@ const artworks = [
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-light tracking-wide">
-            Anita <span className="font-medium">Gattei</span>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-light tracking-wide">
+        Anita <span className="font-medium">Gattei</span>
+        </Link>
+
+        <div className="hidden md:flex items-center space-x-8">
+        {/* Gallery Dropdown */}
+        <div className="relative group">
+          <Link
+          href="#gallery"
+          className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
+          >
+          Gallery
           </Link>
-
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="#gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              Gallery
-            </Link>
-            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              About
-            </Link>
-            {/* <Link
-              href="#exhibitions"
-              className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
-            >
-              Exhibitions
-            </Link> */}
-            <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              Contact
-            </Link>
+          <div className="absolute left-0 w-48 bg-white border border-gray-100 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-300 z-50">
+          <Link
+            href="/extended-gallery"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-display"
+          >
+            Extended Gallery
+          </Link>
           </div>
-
-          <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <Menu className="w-4 h-4" />
-          </Button>
+        </div>
+        <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
+          About
+        </Link>
+        {/* <Link
+          href="#exhibitions"
+          className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
+        >
+          Exhibitions
+        </Link> */}
+        <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
+          Contact
+        </Link>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-            <Link href="#gallery" className="block text-sm uppercase tracking-wider font-display">
-              Gallery
-            </Link>
-            <Link href="#about" className="block text-sm uppercase tracking-wider font-display">
-              About
-            </Link>
-            {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider font-display">
-              Exhibitions
-            </Link> */}
-            <Link href="#contact" className="block text-sm uppercase tracking-wider font-display">
-              Contact
-            </Link>
+        <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <Menu className="w-4 h-4" />
+        </Button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+        {/* Gallery Dropdown for Mobile */}
+        <div>
+          <Link href="#gallery" className="block text-sm uppercase tracking-wider font-display">
+          Gallery
+          </Link>
+          <div className="pl-4 mt-1">
+          <Link
+            href="/extended-gallery"
+            className="block text-sm text-gray-700 font-display py-1"
+          >
+            Extended Gallery
+          </Link>
           </div>
-        )}
+        </div>
+        <Link href="#about" className="block text-sm uppercase tracking-wider font-display">
+          About
+        </Link>
+        {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider font-display">
+          Exhibitions
+        </Link> */}
+        <Link href="#contact" className="block text-sm uppercase tracking-wider font-display">
+          Contact
+        </Link>
+        </div>
+      )}
       </nav>
 
       {/* Hero Section */}
@@ -524,7 +549,7 @@ const artworks = [
                         placeholder="Your full name"
                       />
                     </div>
-                    <div>
+                    {/* <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                         Email *
                       </label>
@@ -536,7 +561,7 @@ const artworks = [
                         className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                         placeholder="your.email@example.com"
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div>

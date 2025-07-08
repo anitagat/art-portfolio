@@ -3,8 +3,8 @@ import './globals.css'
 import '../styles/fonts.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Anita Gattei Art Portfolio',
+  description: 'Art Portfolio. Created with the help of v0',
   generator: 'v0.dev',
 }
 
