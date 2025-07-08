@@ -325,7 +325,7 @@ export default function ExtendedGallery() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url('${basePath}/images/birthofcosmos.jpg')`, opacity: 0.9, filter: 'grayscale(50%)'}} />
         <div className="absolute inset-0 bg-[#0a1931]/80" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-4 text-white tracking-tight drop-shadow-lg" style={{letterSpacing: '0.01em'}}>
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-4 text-white/80 tracking-tight drop-shadow-lg" style={{letterSpacing: '0.01em'}}>
             Extended Gallery
           </h1>
           <p className="text-lg md:text-xl font-display text-white/80 mb-6 max-w-2xl mx-auto">
@@ -333,13 +333,13 @@ export default function ExtendedGallery() {
           </p>
         </div>
       </section>
-
+      {/* style={{ backgroundColor: "#f0ebdf" }} */}
       {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6">
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f0ebdf" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-6">Portfolio</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{ color: "#0E0E55" }}>Portfolio</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
               Oil, watercolour and mixed media artworks.
             </p>
           </div>
@@ -478,7 +478,7 @@ export default function ExtendedGallery() {
       )}
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-black text-white text-center font-display mt-12">
+      <footer className="py-8 px-6 bg-[#0E0E40] text-white text-center font-display mt-12">
         <p className="text-sm text-gray-400">© 2025 Anita Gattei. All rights reserved.</p>
       </footer>
     </div>

@@ -329,11 +329,11 @@ const artworks = [
       </section>
 
       {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6">
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f0ebdf" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-6">Selected Works</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#0E0E55"}}>Selected Works</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
               A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the
               relationship between abstract and figurative expression.
             </p>
@@ -386,8 +386,8 @@ const artworks = [
         <div className="max-w-6xl mx-auto relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0a1931" }}>About the Artist</h2>
-                <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light">
+              <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0E0E55" }}>About the Artist</h2>
+                <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light" style={{ color: "#0E0E48" }}>
                 <p className="text-left">
                   My work explores the dynamic relationship between
                   colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
@@ -626,8 +626,8 @@ const artworks = [
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-black text-white text-center font-display">
-        <p className="text-sm text-gray-400">© 2025 Anita Gattei. All rights reserved.</p>
+      <footer className="py-8 px-6 bg-[#f0ebdf] text-white text-center font-display">
+        <p className="text-sm text-[#0E0E55]">© 2025 Anita Gattei. All rights reserved.</p>
       </footer>
 
       {/* Image Modal */}
