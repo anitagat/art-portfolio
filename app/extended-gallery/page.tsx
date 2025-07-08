@@ -321,8 +321,8 @@ export default function ExtendedGallery() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-[#0a1931] mt-16">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url('${basePath}/images/liquid.jpg')`, opacity: 0.7, filter: 'grayscale(60%)'}} />
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#0a1931] mt-16">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url('${basePath}/images/birthofcosmos.jpg')`, opacity: 0.9, filter: 'grayscale(50%)'}} />
         <div className="absolute inset-0 bg-[#0a1931]/80" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-4 text-white tracking-tight drop-shadow-lg" style={{letterSpacing: '0.01em'}}>

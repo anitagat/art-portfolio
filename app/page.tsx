@@ -374,7 +374,7 @@ const artworks = [
         <div
           className="absolute inset-0 w-full h-full z-0"
           style={{
-            backgroundImage: `url('${basePath}/images/diving.jpeg')`,
+            backgroundImage: `url('${basePath}/images/liquid.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.4, // Adjust for desired opacity
@@ -388,15 +388,19 @@ const artworks = [
             <div>
               <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0a1931" }}>About the Artist</h2>
                 <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light">
-                <p className="text-justify">
+                <p className="text-left">
                   My work explores the dynamic relationship between
                   colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
-                  my paintings attempt to capture the fluid nature of human experience through abstract and semi-figurative
-                  compositions.
+                  my paintings attempt to capture the fluid and organic nature of human experience through abstract and semi-figurative
+                  compositions. 
                 </p>
-                <p className="text-justify">
+                <p className="text-left">
+                  Rich in botanical elements, my pieces often reflect the intimate desire to feel immersed in nature, turning the micro into macro.
                   I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the
                   psychological aspects of visual perception.
+                </p>
+                <p className="text-left">
+                  My work is deeply inspired by the work of Georgia O'Keeffe, whose ability to elevate natural patterns and shapes into abstract form influences the way I look at the world.
                 </p>
               </div>
 

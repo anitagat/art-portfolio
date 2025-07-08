@@ -4,7 +4,7 @@ import '../styles/fonts.css'
 
 export const metadata: Metadata = {
   title: 'Anita Gattei Art Portfolio',
-  description: 'Art Portfolio. Created with the help of v0',
+  description: 'Contemporary Visual Artworks',
   generator: 'v0.dev',
 }
 
