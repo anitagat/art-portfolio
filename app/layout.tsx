@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import '../styles/fonts.css'
+import Head from 'next/head'
 
 export const metadata: Metadata = {
   title: 'Anita Gattei Art Portfolio',
@@ -15,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/images/depths_copia.png" type="image/png" />
+      </Head>
       <body>{children}</body>
     </html>
   )
