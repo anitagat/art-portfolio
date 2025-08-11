@@ -69,7 +69,7 @@ export default function HomePage() {
     en: {
       nav: {
         gallery: "Gallery",
-        extendedGallery: "Extended Gallery",
+        extendedGallery: "Portfolio",
         about: "About",
         contact: "Contact",
         exhibitions: "Exhibitions",
@@ -85,7 +85,7 @@ export default function HomePage() {
         description: "A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the relationship between abstract and figurative expression.",
       },
       about: {
-        heading: "About the Artist",
+        heading: "About",
         p1: "My work explores the dynamic relationship between colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media, my paintings attempt to capture the fluid and organic nature of human experience through abstract and semi-figurative compositions.",
         p2: "Rich in botanical elements, my pieces often reflect the intimate desire to feel immersed in nature, turning the micro into macro. I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the psychological aspects of visual perception.",
         p3: "My work is deeply inspired by the work of Georgia O'Keeffe, whose ability to elevate natural patterns and shapes into abstract form influences the way I look at the world.",
@@ -119,7 +119,7 @@ export default function HomePage() {
     it: {
       nav: {
         gallery: "Galleria",
-        extendedGallery: "Galleria Estesa",
+        extendedGallery: "Portfolio",
         about: "Biografia",
         contact: "Contatti",
         exhibitions: "Mostre",
@@ -561,12 +561,20 @@ export default function HomePage() {
 
             <div className="relative">
               <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <motion.div
+                className="absolute inset-0"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 <Image
                   src={`${basePath}/images/DSC01937_copia.JPG`}
                   alt="studio"
                   fill
                   className="object-cover"
                 />
+              </motion.div>
               </div>
               <p className="text-sm text-gray-500 mt-4 bold">Anita, 2023</p>
             </div>
@@ -768,7 +776,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-[#f0ebdf] text-white text-center font-display">
+      <footer className="py-8 px-6 bg-[#FFFFFA] text-white text-center font-display">
         <p className="text-sm text-[#0E0E55]">{t[lang].copyright}</p>
       </footer>
 
