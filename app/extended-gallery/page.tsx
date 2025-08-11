@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Globe } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -39,18 +40,8 @@ const artworks = [
       "Ben Nevis, Acrylics on Canvas, 2018.",
     gridSpan: "md:col-span-2 md:row-span-2",
   },
-  { 
-    id: 4,
-    title: "Migration",
-    medium: "Watercolour on Paper",
-    year: "2024",
-    dimensions: "20 × 25 cm",
-    image:  `${basePath}/images/migration.jpg`,
-    description: "Migration, Watercolour on Paper, 2024.",
-    gridSpan: "md:col-span-1 md:row-span-2",
-  },
   {
-    id: 5,
+    id: 4,
     title: "Blossom",
     medium: "Oil on Canvas",
     year: "2019",
@@ -60,13 +51,23 @@ const artworks = [
     "Blossom, Oil on Canvas, 2019.",
     gridSpan: "md:col-span-1 md:row-span-2",
   },
-  { id: 6, 
+  { id: 5, 
     title: "Dawning",
     medium: "Oil on Canvas",
     year: "2019",
     dimensions: "30 × 15 cm",
     image:  `${basePath}/images/dawning.jpg`,
     description: "Dawning, Oil on Canvas, 2019.",
+    gridSpan: "md:col-span-1 md:row-span-2",
+  },
+  {
+    id: 6,
+    title: "The Hug",
+    medium: "Oil on Canvas",
+    year: "2025",
+    dimensions: "30 × 40 cm",
+    image:  `${basePath}/images/hug.png`,
+    description: "The Hug, Oil on Canvas, 2025.",
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
@@ -116,10 +117,20 @@ const artworks = [
     dimensions: "30 × 15 cm",
     image:  `${basePath}/images/june.jpg`,
     description: "June, Mixed Media, 2021.",
-    gridSpan: "md:col-span-2 md:row-span-2",
+    gridSpan: "md:col-span-1 md:row-span-2",
+  },
+  { 
+    id: 11,
+    title: "Migration",
+    medium: "Watercolour on Paper",
+    year: "2024",
+    dimensions: "20 × 25 cm",
+    image:  `${basePath}/images/migration.jpg`,
+    description: "Migration, Watercolour on Paper, 2024.",
+    gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
-    id: 12,
+    id: 13,
     title: "Amore e Psiche",
     medium: "Watercolor on Paper",
     year: "2022",
@@ -129,7 +140,7 @@ const artworks = [
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
-    id: 13,
+    id: 14,
     title: "Liquid Dreams",
     medium: "Oil on Canvas",
     year: "2019",
@@ -140,7 +151,7 @@ const artworks = [
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
-    id: 14,
+    id: 15,
     title: "Botanical Study, Sicilian Landscape",
     medium: "Watercolour on Paper",
     year: "2019",
@@ -150,7 +161,7 @@ const artworks = [
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
-    id: 15,
+    id: 16,
     title: "Recognition",
     medium: "Oil on Canvas",
     year: "2019",
@@ -160,7 +171,7 @@ const artworks = [
     gridSpan: "md:col-span-2 md:row-span-3",
   },
   {
-    id: 16,
+    id: 17,
     title: "Depths",
     medium: "Oil on Canvas",
     year: "2025",
@@ -233,7 +244,7 @@ const artworks = [
     medium: "Oil on Canvas",
     year: "2024",
     dimensions: "40 × 30 cm",
-    image: `${basePath}/images/dendron.jpg`,
+    image: `${basePath}/images/dendron.png`,
     description: "Dendron, Oil on Canvas, 2024.",
     gridSpan: "md:col-span-2 md:row-span-1",
   }
@@ -241,6 +252,33 @@ const artworks = [
 
 export default function ExtendedGallery() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
+  // Language state: 'en' or 'it'
+  const [lang, setLang] = useState<'en' | 'it'>('en');
+  // Translations
+  const t = {
+    en: {
+      nav: {
+        home: "Home",
+        extendedGallery: "Extended Gallery",
+      },
+      gallery: {
+        heading: "Portfolio",
+        description: "Oil, watercolour and mixed media artworks.",
+      },
+      copyright: "© 2025 Anita Gattei. All rights reserved."
+    },
+    it: {
+      nav: {
+        home: "Home",
+        extendedGallery: "Galleria Estesa",
+      },
+      gallery: {
+        heading: "Portfolio",
+        description: "Opere in olio, acquerello e tecniche miste.",
+      },
+      copyright: "© 2025 Anita Gattei. Tutti i diritti riservati."
+    }
+  };
   const [showDescription, setShowDescription] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
@@ -311,11 +349,20 @@ export default function ExtendedGallery() {
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              Home
+              {t[lang].nav.home}
             </Link>
             <Link href="/extended-gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              Extended Gallery
+              {t[lang].nav.extendedGallery}
             </Link>
+            {/* Language Switcher */}
+            <button
+              className="ml-4 flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none"
+              aria-label="Change language"
+              onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+            >
+              <Globe className="w-5 h-5 mr-1" />
+              <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
+            </button>
           </div>
         </div>
       </nav>
@@ -329,18 +376,18 @@ export default function ExtendedGallery() {
             Extended Gallery
           </h1>
           <p className="text-lg md:text-xl font-display text-white/80 mb-6 max-w-2xl mx-auto">
-            A wider gallery for curious art-lovers.
+            
           </p>
         </div>
       </section>
       {/* style={{ backgroundColor: "#f0ebdf" }} */}
       {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f0ebdf" }}>
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{ color: "#0E0E55" }}>Portfolio</h2>
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{ color: "#0E0E55" }}>{t[lang].gallery.heading}</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
-              Oil, watercolour and mixed media artworks.
+              {t[lang].gallery.description}
             </p>
           </div>
 
@@ -479,7 +526,7 @@ export default function ExtendedGallery() {
 
       {/* Footer */}
       <footer className="py-8 px-6 bg-[#0E0E40] text-white text-center font-display mt-12">
-        <p className="text-sm text-gray-400">© 2025 Anita Gattei. All rights reserved.</p>
+        <p className="text-sm text-gray-400">{t[lang].copyright}</p>
       </footer>
     </div>
   )

@@ -4,9 +4,14 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Globe } from "lucide-react"
 import { Menu, Instagram, Mail, ArrowDown } from "lucide-react"
+import { motion } from "framer-motion"
 
-export default function ArtistPortfolio() {
+export default function HomePage() {
+
+  // Language state: 'en' or 'it'
+  const [lang, setLang] = useState<'en' | 'it'>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
@@ -58,9 +63,112 @@ export default function ArtistPortfolio() {
     window.location.href = mailto
   }
 
-  const basePath = '/art-portfolio';
 
-const artworks = [
+  // Translations
+  const t = {
+    en: {
+      nav: {
+        gallery: "Gallery",
+        extendedGallery: "Extended Gallery",
+        about: "About",
+        contact: "Contact",
+        exhibitions: "Exhibitions",
+        viewPortfolio: "View Portfolio",
+      },
+      hero: {
+        title: "Anita Gattei",
+        subtitle: "Visual Art",
+        tagline: "Natural elements echoing through colourful dreams.",
+      },
+      gallery: {
+        heading: "Selected Artworks",
+        description: "A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the relationship between abstract and figurative expression.",
+      },
+      about: {
+        heading: "About the Artist",
+        p1: "My work explores the dynamic relationship between colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media, my paintings attempt to capture the fluid and organic nature of human experience through abstract and semi-figurative compositions.",
+        p2: "Rich in botanical elements, my pieces often reflect the intimate desire to feel immersed in nature, turning the micro into macro. I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the psychological aspects of visual perception.",
+        p3: "My work is deeply inspired by the work of Georgia O'Keeffe, whose ability to elevate natural patterns and shapes into abstract form influences the way I look at the world.",
+      },
+      contact: {
+        heading: "Get in Touch",
+        description: "For inquiries about available works, commissions, or exhibition opportunities, please don't hesitate to reach out.",
+        contactInfo: "Contact Information",
+        email: "anita.gattei@gmail.com",
+        instagram: "indianinkk",
+        commission: "I welcome commission inquiries for original paintings and mixed media works. Each piece is created in close collaboration with the client to ensure a meaningful and personal artistic experience.",
+        sendMessage: "Send a Message",
+        name: "Name *",
+        type: "Type of Inquiry",
+        subject: "Subject",
+        message: "Message *",
+        send: "Send Message",
+        inquiryTypes: [
+          "General Inquiry",
+          "Commission Request",
+          "Purchase Inquiry",
+          "Exhibition Opportunity",
+          "Press/Media"
+        ],
+        placeholderName: "Your full name",
+        placeholderSubject: "Brief subject line",
+        placeholderMessage: "Please describe your inquiry in detail. For commissions, include preferred size, style, timeline, and budget range."
+      },
+      copyright: "© 2025 Anita Gattei. All rights reserved."
+    },
+    it: {
+      nav: {
+        gallery: "Galleria",
+        extendedGallery: "Galleria Estesa",
+        about: "Biografia",
+        contact: "Contatti",
+        exhibitions: "Mostre",
+        viewPortfolio: "Vedi Portfolio",
+      },
+      hero: {
+        title: "Anita Gattei",
+        subtitle: "Arte Visiva",
+        tagline: "Elementi naturali che riecheggiano attraverso sogni colorati.",
+      },
+      gallery: {
+        heading: "Opere Selezionate",
+        description: "Una selezione curata di dipinti e opere su carta che esplorano il movimento, l'emozione e il rapporto tra espressione astratta e figurativa.",
+      },
+      about: {
+        heading: "Sull'artista",
+        p1: "Il mio lavoro esplora la relazione dinamica tra colore, forma ed espressione emotiva. Lavorando principalmente con olio, acquerelli e tecniche miste, i miei dipinti cercano di catturare la natura fluida e organica dell'esperienza umana attraverso composizioni astratte e semi-figurative.",
+        p2: "Ricche di elementi botanici, le mie opere riflettono spesso il desiderio intimo di sentirsi immersi nella natura, trasformando il micro in macro. Non temo l'uso di palette audaci e forme organiche fluide, per esplorare in profondità gli aspetti psicologici della percezione visiva.",
+        p3: "Il mio lavoro è profondamente ispirato da Georgia O'Keeffe, la cui capacità di elevare i motivi naturali in forme astratte influenza il mio modo di vedere il mondo.",
+      },
+      contact: {
+        heading: "Contattami",
+        description: "Per informazioni su opere disponibili, commissioni o opportunità espositive, non esitare a scrivermi.",
+        contactInfo: "Informazioni di Contatto",
+        email: "anita.gattei@gmail.com",
+        instagram: "indianinkk",
+        commission: "Accolgo con piacere richieste di commissioni per dipinti originali e opere su misura. Ogni pezzo viene creato in stretta collaborazione con il cliente per garantire un'esperienza artistica personale e significativa.",
+        sendMessage: "Invia un Messaggio",
+        name: "Nome *",
+        type: "Tipo di Richiesta",
+        subject: "Oggetto",
+        message: "Messaggio *",
+        send: "Invia Messaggio",
+        inquiryTypes: [
+          "Richiesta Generale",
+          "Commissione",
+          "Richiesta di Acquisto",
+          "Opportunità Espositiva",
+          "Stampa/Media"
+        ],
+        placeholderName: "Il tuo nome completo",
+        placeholderSubject: "Breve oggetto",
+        placeholderMessage: "Descrivi la tua richiesta in dettaglio. Per commissioni, includi dimensioni, stile, tempistiche e budget desiderato."
+      },
+      copyright: "© 2025 Anita Gattei. Tutti i diritti riservati."
+    }
+  };
+  const basePath = '/art-portfolio';
+  const artworks = [
     {
       id: 3,
       title: "Recognition",
@@ -69,7 +177,7 @@ const artworks = [
       dimensions: "50 × 50 cm",
       image:  `${basePath}/images/recognition.jpg`,
       description: "Recognition, Oil on Canvas, 2018.",
-      gridSpan: "md:col-span-1 md:row-span-1",
+      gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
       id: 2,
@@ -88,20 +196,29 @@ const artworks = [
       year: "2019",
       dimensions: "60 × 40 cm",
       image: `${basePath}/images/liquid.jpg`,
-      description:
-        "Liquid Dreams, Oil on Canvas, 2019.",
-      gridSpan: "md:col-span-2 md:row-span-2",
+      description: "Liquid Dreams, Oil on Canvas, 2019.",
+      gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
-      id: 4,
-      title: "Diving",
-      medium: "Watercolour on Paper",
+      id: 2,
+      title: "The Hug",
+      medium: "Oil on Canvas",
       year: "2025",
-      dimensions: "20 × 25 cm",
-      image: `${basePath}/images/diving.jpeg`,
-      description: " Diving, Watercolour on Paper, 2025.",
-      gridSpan: "md:col-span-1 md:row-span-1",
+      dimensions: "30 × 40 cm",
+      image:  `${basePath}/images/hug.png`,
+      description: "The Hug, Oil on Canvas, 2025.",
+      gridSpan: "md:col-span-1 md:row-span-2",
     },
+    // {
+    //   id: 4,
+    //   title: "Diving",
+    //   medium: "Watercolour on Paper",
+    //   year: "2025",
+    //   dimensions: "20 × 25 cm",
+    //   image: `${basePath}/images/diving.jpeg`,
+    //   description: "Diving, Watercolour on Paper, 2025.",
+    //   gridSpan: "md:col-span-1 md:row-span-1",
+    // },
     {
       id: 5,
       title: "Halo",
@@ -113,17 +230,37 @@ const artworks = [
       gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
-      id: 6,
-      title: "Depths",
-      medium: "Oil on Canvas",
-      year: "2025",
-      dimensions: "40 × 30 cm",
-      image:  `${basePath}/images/depths_copia.png`,
-      description: "Depths, Oil on Canvas, 2025.",
-      gridSpan: "md:col-span-2 md:row-span-1",
+      id: 7,
+      title: "June",
+      medium: "Mixed Media",
+      year: "2021",
+      dimensions: "30 × 15 cm",
+      image:  `${basePath}/images/june.jpg`,
+      description: "June, Mixed Media, 2021.",
+      gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
-      id: 7,
+      id: 8,
+      title: "Kernel",
+      medium: "Oil on Canvas",
+      year: "2019",
+      dimensions: "40 × 50 cm",
+      image: `${basePath}/images/kernel.jpg`,
+      description: "Kernel, Oil on Canvas, 2019.",
+      gridSpan: "md:col-span-1 md:row-span-1"
+    },
+    {
+      id: 9,
+      title: "Birth of the Cosmos",
+      medium: "Oil on Canvas",
+      year: "2020",
+      dimensions: "30 × 40 cm",
+      image: `${basePath}/images/birthofcosmos.jpg`,
+      description: "Birth of the Cosmos, Oil on Canvas, 2020.",
+      gridSpan: "md:col-span-1 md:row-span-1"
+    },
+    {
+      id: 10,
       title: "Emotional Landscapes",
       medium: "Mixed Media",
       year: "2019",
@@ -133,35 +270,16 @@ const artworks = [
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
-      id: 8,
-      title: "June",
-      medium: "Mixed Media",
-      year: "2021",
-      dimensions: "30 × 15 cm",
-      image:  `${basePath}/images/june.jpg`,
-      description: "June, Mixed Media, 2021.",
-      gridSpan: "md:col-span-1 md:row-span-1",
-    },
-  // Add more artworks as needed
-  { id: 9, 
-    title: "Kernel", 
-    medium: "Oil on Canvas", 
-    year: "2019", 
-    dimensions: "40 × 50 cm", 
-    image: `${basePath}/images/kernel.jpg`, 
-    description: "Kernel, Oil on Canvas, 2019.", 
-    gridSpan: "md:col-span-1 md:row-span-1"},
-
-    { id: 10,
-    title: "Birth of the Cosmos",
-    medium: "Oil on Canvas",
-    year: "2020",
-    dimensions: "30 × 40 cm",
-    image: `${basePath}/images/birthofcosmos.jpg`,
-    description: "Birth of the Cosmos, Oil on Canvas, 2020.",
-    gridSpan: "md:col-span-1 md:row-span-1"
-    },
-  ]
+      id: 11,
+      title: "Depths",
+      medium: "Oil on Canvas",
+      year: "2025",
+      dimensions: "40 × 30 cm",
+      image:  `${basePath}/images/depths_copia.png`,
+      description: "Depths, Oil on Canvas, 2025.",
+      gridSpan: "md:col-span-2 md:row-span-1",
+    }
+  ];
 
 
   useEffect(() => {
@@ -217,76 +335,94 @@ const artworks = [
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-light tracking-wide">
-        Anita <span className="font-medium">Gattei</span>
-        </Link>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link href="/" className="text-2xl font-light tracking-wide">
+            Anita <span className="font-medium">Gattei</span>
+          </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
-        {/* Gallery Dropdown */}
-        <div className="relative group">
-          <Link
-          href="#gallery"
-          className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
-          >
-          Gallery
-          </Link>
-          <div className="absolute left-0 w-48 bg-white border border-gray-100 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-300 z-50">
-          <Link
-            href="/extended-gallery"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-display"
-          >
-            Extended Gallery
-          </Link>
+          <div className="hidden md:flex items-center space-x-8">
+            {/* Gallery Dropdown */}
+            <div className="relative group">
+              <Link
+                href="#gallery"
+                className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
+              >
+                {t[lang].nav.gallery}
+              </Link>
+              <div className="absolute left-0 w-48 bg-white border border-gray-100 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-300 z-50">
+                <Link
+                  href="/extended-gallery"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-display"
+                >
+                  {t[lang].nav.extendedGallery}
+                </Link>
+              </div>
+            </div>
+            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
+              {t[lang].nav.about}
+            </Link>
+            {/* <Link
+              href="#exhibitions"
+              className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
+            >
+              {t[lang].nav.exhibitions}
+            </Link> */}
+            <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
+              {t[lang].nav.contact}
+            </Link>
+            {/* Language Switcher */}
+            <button
+              className="ml-4 flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none"
+              aria-label="Change language"
+              onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+            >
+              <Globe className="w-5 h-5 mr-1" />
+              <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
+            </button>
           </div>
-        </div>
-        <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-          About
-        </Link>
-        {/* <Link
-          href="#exhibitions"
-          className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
-        >
-          Exhibitions
-        </Link> */}
-        <Link href="#contact" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-          Contact
-        </Link>
+
+          <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Menu className="w-4 h-4" />
+          </Button>
         </div>
 
-        <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <Menu className="w-4 h-4" />
-        </Button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-        {/* Gallery Dropdown for Mobile */}
-        <div>
-          <Link href="#gallery" className="block text-sm uppercase tracking-wider font-display">
-          Gallery
-          </Link>
-          <div className="pl-4 mt-1">
-          <Link
-            href="/extended-gallery"
-            className="block text-sm text-gray-700 font-display py-1"
-          >
-            Extended Gallery
-          </Link>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+            {/* Gallery Dropdown for Mobile */}
+            <div>
+              <Link href="#gallery" className="block text-sm uppercase tracking-wider font-display">
+                {t[lang].nav.gallery}
+              </Link>
+              <div className="pl-4 mt-1">
+                <Link
+                  href="/extended-gallery"
+                  className="block text-sm text-gray-700 font-display py-1"
+                >
+                  {t[lang].nav.extendedGallery}
+                </Link>
+              </div>
+            </div>
+            <Link href="#about" className="block text-sm uppercase tracking-wider font-display">
+              {t[lang].nav.about}
+            </Link>
+            {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider font-display">
+              {t[lang].nav.exhibitions}
+            </Link> */}
+            <Link href="#contact" className="block text-sm uppercase tracking-wider font-display">
+              {t[lang].nav.contact}
+            </Link>
+            {/* Language Switcher */}
+            <button
+              className="flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none mt-2"
+              aria-label="Change language"
+              onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+            >
+              <Globe className="w-5 h-5 mr-1" />
+              <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
+            </button>
           </div>
-        </div>
-        <Link href="#about" className="block text-sm uppercase tracking-wider font-display">
-          About
-        </Link>
-        {/* <Link href="#exhibitions" className="block text-sm uppercase tracking-wider font-display">
-          Exhibitions
-        </Link> */}
-        <Link href="#contact" className="block text-sm uppercase tracking-wider font-display">
-          Contact
-        </Link>
-        </div>
-      )}
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -295,20 +431,20 @@ const artworks = [
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('${basePath}/images/depths_copia.png')`,
-            opacity: 0.9, // High opacity for minimalism
-            filter: 'grayscale(60%)',
+            opacity: 0.99, // High opacity for minimalism
+            filter: 'grayscale(50%)',
           }}
         />
         <div className="absolute inset-0 bg-[#0a1931]/80" />
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-6xl md:text-8xl font-display font-bold mb-4 text-white tracking-tight drop-shadow-lg" style={{letterSpacing: '0.01em'}}>
-            Anita Gattei
+            {t[lang].hero.title}
           </h1>
           <h2 className="text-2xl md:text-4xl font-display font-light mb-8 text-[#bfc9d9] tracking-wide uppercase" style={{letterSpacing: '0.2em'}}>
-            Contemporary Visual Art
+            {t[lang].hero.subtitle}
           </h2>
           <p className="text-lg md:text-xl font-display text-white/80 mb-12 max-w-2xl mx-auto">
-             Natural elements echoing through colourful dreams.
+            {t[lang].hero.tagline}
           </p>
           <Link href="/extended-gallery">
             <Button
@@ -316,7 +452,7 @@ const artworks = [
               size="lg"
               className="border-white text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-transparent font-display tracking-wider"
             >
-              View Portfolio
+              {t[lang].nav.viewPortfolio}
             </Button>
           </Link>
         </div>
@@ -329,23 +465,38 @@ const artworks = [
       </section>
 
       {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f0ebdf" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#0E0E55"}}>Selected Works</h2>
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+        <div className="max-w-7xl mx-auto relative">
+          {/* Decorative Flowers Background */}
+          <div
+            className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center 10%',
+              backgroundSize: '70%',
+              opacity: 0.18,
+              filter: 'grayscale(0%) blur(0.5px)',
+            }}
+          />
+          <div className="text-center mb-16 relative z-10">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.heading}</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
-              A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the
-              relationship between abstract and figurative expression.
+              {t[lang].gallery.description}
             </p>
           </div>
-
           {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] relative z-10">
             {artworks.map((artwork, idx) => (
-              <div
+              <motion.div
                 key={artwork.id}
                 className={`group relative overflow-hidden cursor-pointer ${artwork.gridSpan}`}
                 onClick={() => setSelectedImageIndex(idx)}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
               >
                 <Image
                   src={artwork.image || "/placeholder.svg"}
@@ -362,7 +513,7 @@ const artworks = [
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -386,21 +537,16 @@ const artworks = [
         <div className="max-w-6xl mx-auto relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0E0E55" }}>About the Artist</h2>
+              <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0E0E55" }}>{t[lang].about.heading}</h2>
                 <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light" style={{ color: "#0E0E48" }}>
                 <p className="text-left">
-                  My work explores the dynamic relationship between
-                  colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media,
-                  my paintings attempt to capture the fluid and organic nature of human experience through abstract and semi-figurative
-                  compositions. 
+                  {t[lang].about.p1}
                 </p>
                 <p className="text-left">
-                  Rich in botanical elements, my pieces often reflect the intimate desire to feel immersed in nature, turning the micro into macro.
-                  I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the
-                  psychological aspects of visual perception.
+                  {t[lang].about.p2}
                 </p>
                 <p className="text-left">
-                  My work is deeply inspired by the work of Georgia O'Keeffe, whose ability to elevate natural patterns and shapes into abstract form influences the way I look at the world.
+                  {t[lang].about.p3}
                 </p>
               </div>
 
@@ -476,10 +622,9 @@ const artworks = [
       <section id="contact" className="py-20 px-6 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-8">Get in Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-display italic mb-8">{t[lang].contact.heading}</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-display">
-              For inquiries about available works, commissions, or exhibition opportunities, please don't hesitate to
-              reach out.
+              {t[lang].contact.description}
             </p>
           </div>
 
@@ -487,21 +632,21 @@ const artworks = [
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-light mb-6 font-display">Contact Information</h3>
+                <h3 className="text-2xl font-light mb-6 font-display">{t[lang].contact.contactInfo}</h3>
                 <div className="space-y-4">
                   <a
                     href="mailto:elena@elenarossi.art"
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>anita.gattei@gmail.com</span>
+                    <span>{t[lang].contact.email}</span>
                   </a>
                   <a
                     href="https://instagram.com/indianinkk"
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Instagram className="w-5 h-5" />
-                    <span>indianinkk</span>
+                    <span>{t[lang].contact.instagram}</span>
                   </a>
                 </div>
               </div>
@@ -516,10 +661,9 @@ const artworks = [
               </div> */}
 
               <div>
-                <h3 className="text-2xl font-light mb-4 font-display">Commission Process</h3>
+                <h3 className="text-2xl font-light mb-4 font-display">{t[lang].contact.sendMessage}</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  I welcome commission inquiries for original paintings and mixed media works. Each piece is created in
-                  close collaboration with the client to ensure a meaningful and personal artistic experience.
+                  {t[lang].contact.commission}
                 </p>
               </div>
             </div>
@@ -537,12 +681,12 @@ const artworks = [
               }}
               />
               <div className="relative z-10">
-                <h3 className="text-2xl font-light mb-6 font-display">Send a Message</h3>
+                <h3 className="text-2xl font-light mb-6 font-display">{t[lang].contact.sendMessage}</h3>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                        Name *
+                        {t[lang].contact.name}
                       </label>
                       <input
                         type="text"
@@ -550,7 +694,7 @@ const artworks = [
                         name="name"
                         required
                         className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                        placeholder="Your full name"
+                        placeholder={t[lang].contact.placeholderName}
                       />
                     </div>
                     {/* <div>
@@ -570,37 +714,35 @@ const artworks = [
 
                   <div>
                     <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-300 mb-2">
-                      Type of Inquiry
+                      {t[lang].contact.type}
                     </label>
                     <select
                       id="inquiryType"
                       name="inquiryType"
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                     >
-                      <option value="General Inquiry">General Inquiry</option>
-                      <option value="Commission Request">Commission Request</option>
-                      <option value="Purchase Inquiry">Purchase Inquiry</option>
-                      <option value="Exhibition Opportunity">Exhibition Opportunity</option>
-                      <option value="Press/Media">Press/Media</option>
+                      {t[lang].contact.inquiryTypes.map((type, idx) => (
+                        <option value={type} key={idx}>{type}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                      Subject
+                      {t[lang].contact.subject}
                     </label>
                     <input
                       type="text"
                       id="subject"
                       name="subject"
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                      placeholder="Brief subject line"
+                      placeholder={t[lang].contact.placeholderSubject}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      Message *
+                      {t[lang].contact.message}
                     </label>
                     <textarea
                       id="message"
@@ -608,7 +750,7 @@ const artworks = [
                       rows={6}
                       required
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
-                      placeholder="Please describe your inquiry in detail. For commissions, include preferred size, style, timeline, and budget range."
+                      placeholder={t[lang].contact.placeholderMessage}
                     />
                   </div>
 
@@ -616,7 +758,7 @@ const artworks = [
                     type="submit"
                     className="w-full bg-white text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed py-3 text-lg font-medium"
                   >
-                    Send Message
+                    {t[lang].contact.send}
                   </Button>
                 </form>
               </div>
@@ -627,7 +769,7 @@ const artworks = [
 
       {/* Footer */}
       <footer className="py-8 px-6 bg-[#f0ebdf] text-white text-center font-display">
-        <p className="text-sm text-[#0E0E55]">© 2025 Anita Gattei. All rights reserved.</p>
+        <p className="text-sm text-[#0E0E55]">{t[lang].copyright}</p>
       </footer>
 
       {/* Image Modal */}
