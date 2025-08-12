@@ -91,18 +91,18 @@ export default function HomePage() {
       },
       hero: {
         title: "Anita Gattei",
-        subtitle: "Visual Art",
-        tagline: "Ecospheres and Microcosms",
+        subtitle: "Ecospheres and Microcosms",
+        tagline: "Visual Art",
       },
       gallery: {
         heading: "First glances",
         description: "A curated selection of paintings and mixed media works exploring the relationship between human and botanical elements, and between abstract and figurative expression.",
       },
       about: {
-        heading: "About",
-        p1: "My work explores the dynamic relationship between colour, form, and emotional expression. Working primarily in oil, watercolours, and mixed media, my paintings attempt to capture the fluid and organic nature of human experience through abstract and semi-figurative compositions.",
-        p2: "Rich in botanical elements, my pieces often reflect the intimate desire to feel immersed in nature, turning the micro into macro. I don't shy away from using bold color palettes and organic flowing forms, to dive into a deep exploration of the psychological aspects of visual perception.",
-        p3: "My work is deeply inspired by the work of Georgia O'Keeffe, whose ability to elevate natural patterns and shapes into abstract form influences the way I look at the world.",
+        heading: "About me",
+        p1: "My artistic research explores the dynamic relationship between colour, form and emotional tension. Working mainly with oil, watercolours and mixed media, my paintings seek to capture the fluid and organic nature of all that is vital, through abstract and figurative compositions.",
+        p2: "My paintings are often rich in plant elements and botanical sketches, representing the yearning to feel intimately part of Nature, especially that of plants. By taking a perspective that translates the microscopic into the macroscopic, I wish to draw attention to the natural microcosms that remain hidden from the human eye.",
+        p3: "My work is deeply inspired by Georgia O'Keeffe, whose ability to elevate natural motifs into abstract forms influences my way of seeing the world.",
       },
       contact: {
         heading: "Get in Touch",
@@ -110,7 +110,7 @@ export default function HomePage() {
         contactInfo: "Contact Information",
         email: "anita.gattei@gmail.com",
         instagram: "indianinkk",
-        commission: "I welcome commission inquiries for original paintings and mixed media works. Each piece is created in close collaboration with the client to ensure a meaningful and personal artistic experience.",
+        commission: "I am always happy to take on commissions for original paintings and bespoke works. All the works exhibited here are also available as prints, which can be produced in various sizes.",
         sendMessage: "Send a Message",
         name: "Name *",
         type: "Type of Inquiry",
@@ -141,17 +141,17 @@ export default function HomePage() {
       },
       hero: {
         title: "Anita Gattei",
-        subtitle: "Arte Visiva",
-        tagline: "Ecosfere e Microcosmi",
+        subtitle: "Ecosfere e Microcosmi",
+        tagline: "Arti Visive",
       },
       gallery: {
         heading: "Primi Sguardi",
         description: "Una selezione di dipinti che esplorano il rapporto tra elementi umani e botanici, e tra componenti astratte e figurative.",
       },
       about: {
-        heading: "Sull'artista",
-        p1: "Il mio lavoro esplora la relazione dinamica tra colore, forma ed espressione emotiva. Lavorando principalmente con olio, acquerelli e tecniche miste, i miei dipinti cercano di catturare la natura fluida e organica dell'esperienza umana attraverso composizioni astratte e semi-figurative.",
-        p2: "Ricche di elementi botanici, le mie opere riflettono spesso il desiderio intimo di sentirsi immersi nella natura, trasformando il micro in macro. Non temo l'uso di palette audaci e forme organiche fluide, per esplorare gli effetti psicologici della percezione visiva.",
+        heading: "Su di me",
+        p1: "La mia ricerca artistica esplora la relazione dinamica tra colore, forme e tensione emotiva. Lavorando principalmente con olio, acquerelli e tecniche miste, i miei dipinti cercano di catturare la natura fluida e organica di tutto ciò che è vitale, attraverso composizioni astratte e figurative.",
+        p2: "I miei quadri sono spesso ricchi di elementi vegetali e bozzetti botanici, rappresentando l'anelito al sentirsi intimamente parte della Natura, in particolar modo quella delle piante; assumendo una prospettiva che trasla il microscopico rendendolo macroscopico, desidero invitare lo sguardo sui microcosmi naturali che rimangono occulti all'occhio umano.",
         p3: "Il mio lavoro è profondamente ispirato da Georgia O'Keeffe, la cui capacità di elevare i motivi naturali in forme astratte influenza il mio modo di vedere il mondo.",
       },
       contact: {
@@ -160,7 +160,7 @@ export default function HomePage() {
         contactInfo: "Informazioni di Contatto",
         email: "anita.gattei@gmail.com",
         instagram: "indianinkk",
-        commission: "Accolgo con piacere richieste di commissioni per dipinti originali e opere su misura. Ogni pezzo viene creato in stretta collaborazione con il cliente per garantire un'esperienza artistica personale e significativa.",
+        commission: "Sono sempre felice di accogliere richieste di commissioni per dipinti originali e opere su misura. Tutti i lavori qui esposti sono anche disponibili in forma di stampa, che può essere realizzata in diverse dimensioni.",
         sendMessage: "Invia un Messaggio",
         name: "Nome *",
         type: "Tipo di Richiesta",
@@ -356,6 +356,9 @@ export default function HomePage() {
 
           <div className="hidden md:flex items-center space-x-8">
             {/* Gallery Dropdown */}
+            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
+              {t[lang].nav.about}
+            </Link>
             <div className="relative group">
               <Link
                 href="#gallery"
@@ -372,9 +375,6 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <Link href="#about" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-              {t[lang].nav.about}
-            </Link>
             {/* <Link
               href="#exhibitions"
               className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display"
@@ -478,61 +478,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
-        <div className="max-w-7xl mx-auto relative">
-          {/* Decorative Flowers Background */}
-          <div
-            className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-            aria-hidden="true"
-            style={{
-              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center 10%',
-              backgroundSize: '90%',
-              opacity: 0.6,
-              filter: 'grayscale(0%) blur(0.5px)',
-            }}
-          />
-          <div className="text-center mb-16 relative z-10">
-            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.heading}</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
-              {t[lang].gallery.description}
-            </p>
-          </div>
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] relative z-10">
-            {artworks.map((artwork, idx) => (
-              <motion.div
-                key={artwork.id}
-                className={`group relative overflow-hidden cursor-pointer ${artwork.gridSpan}`}
-                onClick={() => setSelectedImageIndex(idx)}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
-              >
-                <Image
-                  src={artwork.image || "/placeholder.svg"}
-                  alt={artwork.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-                <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-white">
-                    <h3 className="text-lg font-medium mb-1">{artwork.title}</h3>
-                    <p className="text-sm opacity-90">
-                      {artwork.medium}, {artwork.year}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* About Section */}
       <section id="about" className="py-20 px-6 bg-gray-50 relative overflow-hidden">
         {/* Background image with opacity and filter */}
@@ -596,6 +541,60 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Gallery Section - Masonry Layout */}
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+        <div className="max-w-7xl mx-auto relative">
+          {/* Decorative Flowers Background */}
+          <div
+            className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center 10%',
+              backgroundSize: '90%',
+              opacity: 0.6,
+              filter: 'grayscale(0%) blur(0.5px)',
+            }}
+          />
+          <div className="text-center mb-16 relative z-10">
+            <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.heading}</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
+              {t[lang].gallery.description}
+            </p>
+          </div>
+          {/* Masonry Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] relative z-10">
+            {artworks.map((artwork, idx) => (
+              <motion.div
+                key={artwork.id}
+                className={`group relative overflow-hidden cursor-pointer ${artwork.gridSpan}`}
+                onClick={() => setSelectedImageIndex(idx)}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
+              >
+                <Image
+                  src={artwork.image || "/placeholder.svg"}
+                  alt={artwork.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
+                <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-white">
+                    <h3 className="text-lg font-medium mb-1">{artwork.title}</h3>
+                    <p className="text-sm opacity-90">
+                      {artwork.medium}, {artwork.year}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>           
       {/* Exhibitions Section */}
       {/* 
       <section id="exhibitions" className="py-20 px-6">
