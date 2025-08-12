@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Menu } from "lucide-react"
 import { Globe } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -699,6 +700,9 @@ export default function ExtendedGallery() {
     setShowDescription(false);
   }, [selectedImageIndex]);
 
+  // Responsive Nav State
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <div className="min-h-screen bg-white">
@@ -708,6 +712,7 @@ export default function ExtendedGallery() {
             <Link href="/" className="text-2xl font-light tracking-wide">
               Anita <span className="font-medium">Gattei</span>
             </Link>
+            {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
                 {t[lang].nav.home}
@@ -719,13 +724,37 @@ export default function ExtendedGallery() {
               <button
                 className="ml-4 flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none"
                 aria-label="Change language"
-              onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+                onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
               >
                 <Globe className="w-5 h-5 mr-1" />
                 <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
               </button>
             </div>
+            {/* Mobile Nav Button */}
+            <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Menu className="w-4 h-4" />
+            </Button>
           </div>
+          {/* Mobile Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+              <Link href="/" className="block text-sm uppercase tracking-wider font-display">
+                {t[lang].nav.home}
+              </Link>
+              <Link href="/extended-gallery" className="block text-sm uppercase tracking-wider font-display">
+                {t[lang].nav.extendedGallery}
+              </Link>
+              {/* Language Switcher */}
+              <button
+                className="flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none mt-2"
+                aria-label="Change language"
+                onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+              >
+                <Globe className="w-5 h-5 mr-1" />
+                <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
+              </button>
+            </div>
+          )}
         </nav>
 
         {/* Hero Section */}
