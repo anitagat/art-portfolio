@@ -11,7 +11,21 @@ import { motion } from "framer-motion"
 export default function HomePage() {
 
   // Language state: 'en' or 'it'
-  const [lang, setLang] = useState<'en' | 'it'>('en');
+  // Language preference: default to 'it', persist in localStorage
+  const [lang, setLang] = useState<'en' | 'it'>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = window.localStorage.getItem('lang');
+      if (stored === 'en' || stored === 'it') return stored;
+    }
+    return 'it';
+  });
+
+  // Persist language preference to localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('lang', lang);
+    }
+  }, [lang]);
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)

@@ -608,7 +608,21 @@ export default function ExtendedGallery() {
   // Use a single type definition at the top-level, not inside the component (move these out if possible)
   const [selectedImageIndex, setSelectedImageIndex] = useState<ModalIndex>(null);
   // Language state: 'en' or 'it'
-  const [lang, setLang] = useState<'en' | 'it'>('en');
+  // Language preference: default to 'it', persist in localStorage
+  const [lang, setLang] = useState<'en' | 'it'>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = window.localStorage.getItem('lang');
+      if (stored === 'en' || stored === 'it') return stored;
+    }
+    return 'it';
+  });
+
+  // Persist language preference to localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('lang', lang);
+    }
+  }, [lang]);
   // Translations
   const t = {
     en: {
@@ -705,7 +719,7 @@ export default function ExtendedGallery() {
               <button
                 className="ml-4 flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none"
                 aria-label="Change language"
-                onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
+              onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
               >
                 <Globe className="w-5 h-5 mr-1" />
                 <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
