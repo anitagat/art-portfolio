@@ -357,22 +357,23 @@ const OilArtworks = [
 const MixedArtworks = [
   {
     id: 1,
+    title: "Hail to the Thief",
+    medium: "Acrylics on Canvas",
+    year: "2024",
+    dimensions: "50 × 40 cm",
+    image: `${basePath}/images/hailtothethief.jpeg`,
+    description:
+      "Ben Nevis, Acrylics on Canvas, 2018.",
+    gridSpan: "md:col-span-1 md:row-span-2",
+  },
+  {
+    id: 2,
     title: "Tropical",
     medium: "Watercolour on Paper",
     year: "2022",
     dimensions: "20 × 15 cm",
     image:  `${basePath}/images/tropical.jpg`,
     description: "Tropical, Watercolour on Paper, 2022.",
-    gridSpan: "md:col-span-1 md:row-span-2",
-  },
-  {
-    id: 2,
-    title: "Patio",
-    medium: "Watercolor on Paper",
-    year: "2022",
-    dimensions: "20 × 15 cm",
-    image: `${basePath}/images/patio.jpg`,
-    description: "Watercolour on Paper, 2022.",
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
@@ -384,10 +385,20 @@ const MixedArtworks = [
     image: `${basePath}/images/bennevis.jpg`,
     description:
       "Ben Nevis, Acrylics on Canvas, 2018.",
-    gridSpan: "md:col-span-2 md:row-span-2",
+    gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
-    id: 8,
+    id: 4,
+    title: "Patio",
+    medium: "Watercolor on Paper",
+    year: "2022",
+    dimensions: "20 × 15 cm",
+    image: `${basePath}/images/patio.jpg`,
+    description: "Watercolour on Paper, 2022.",
+    gridSpan: "md:col-span-1 md:row-span-2",
+  },
+  {
+    id: 5,
     title: "Ortensiae",
     medium: "Acrylic on Canvas",
     year: "2018",
@@ -397,7 +408,7 @@ const MixedArtworks = [
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
-    id: 11,
+    id: 6,
     title: "June",
     medium: "Mixed Media",
     year: "2021",
@@ -407,7 +418,7 @@ const MixedArtworks = [
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   { 
-    id: 12,
+    id: 7,
     title: "Migration",
     medium: "Watercolour on Paper",
     year: "2024",
@@ -427,7 +438,7 @@ const MixedArtworks = [
     gridSpan: "md:col-span-1 md:row-span-2",
   },
   {
-    id: 15,
+    id: 8,
     title: "Botanical Study, Sicilian Landscape",
     medium: "Watercolour on Paper",
     year: "2019",
@@ -447,7 +458,7 @@ const MixedArtworks = [
   //   gridSpan: "md:col-span-1 md:row-span-2",
   // },
   {
-    id: 21,
+    id: 9,
     title: "Venere",
     medium: "Mixed Media",
     year: "2019",
@@ -457,7 +468,7 @@ const MixedArtworks = [
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
-    id: 22,
+    id: 10,
     title: "Diving",
     medium: "Watercolour on Paper",
     year: "2025",
@@ -467,7 +478,7 @@ const MixedArtworks = [
     gridSpan: "md:col-span-1 md:row-span-1",
   },
   {
-    id: 24,
+    id: 11,
     title: "Organs",
     medium: "Digital Painting",
     year: "2025",
@@ -482,7 +493,7 @@ const prints = [
   {
     id: 1,
     title: "Dendron I",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/dendron_print1.jpeg`,
@@ -492,7 +503,7 @@ const prints = [
   {
     id: 2,
     title: "Dendron II",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/dendron_print2.jpeg`,
@@ -502,7 +513,7 @@ const prints = [
   {
     id: 3,
     title: "Dendron III",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/dendron_print3.jpeg`,
@@ -512,7 +523,7 @@ const prints = [
   {
     id: 4,
     title: "Dendron IV",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/dendron_print4.jpeg`,
@@ -522,7 +533,7 @@ const prints = [
   {
     id: 5,
     title: "Dendron V",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/dendron_print5.jpeg`,
@@ -532,7 +543,7 @@ const prints = [
   { 
    id: 6,
     title: "The Hug I",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/hugprint1.001.jpeg`,
@@ -542,7 +553,7 @@ const prints = [
   { 
    id: 7,
     title: "The Hug II",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/hugprint2.jpeg`,
@@ -552,7 +563,7 @@ const prints = [
   { 
    id: 8,
    title: "The Hug III",
-    medium: "Digital Print",
+    medium: "Oil Painting & Digital Post Processing",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/hugprint3.jpeg`,
@@ -562,7 +573,7 @@ const prints = [
   {
     id: 9,
     title: "Organs I",
-    medium: "Digital Print",
+    medium: "Digital Painting",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/organprint1.001.jpeg`,
@@ -572,7 +583,7 @@ const prints = [
   {
     id: 10,
     title: "Organs II",
-    medium: "Digital Print",
+    medium: "Digital Painting",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/organprint2.001.jpeg`,
@@ -582,7 +593,7 @@ const prints = [
   {
     id: 11,
     title: "Organs III",
-    medium: "Digital Print",
+    medium: "Digital Painting",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/organprint3.001.jpeg`,
@@ -592,11 +603,51 @@ const prints = [
   {
     id: 12,
     title: "Organs IV",
-    medium: "Digital Print",
+    medium: "Digital Painting",
     year: "2025",
     dimensions: "30 × 20 cm",
     image: `${basePath}/images/organprint4.001.jpeg`,
     description: "Organs IV, Print, 2025.",
+    gridSpan: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: 13,
+    title: "Furèsta I",
+    medium: "Digital Painting",
+    year: "2025",
+    dimensions: "30 × 20 cm",
+    image: `${basePath}/images/forestprint2.001.jpeg`,
+    description: "Furèsta I, Print, 2025.",
+    gridSpan: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: 14,
+    title: "Furèsta II",
+    medium: "Digital Painting",
+    year: "2025",
+    dimensions: "30 × 20 cm",
+    image: `${basePath}/images/forestprint.001.jpeg`,
+    description: "Furèsta II, Print, 2025.",
+    gridSpan: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: 15,
+    title: "Furèsta III",
+    medium: "Digital Painting",
+    year: "2025",
+    dimensions: "30 × 20 cm",
+    image: `${basePath}/images/forestprint3.001.jpeg`,
+    description: "Furèsta III, Print, 2025.",
+    gridSpan: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: 16,
+    title: "Furèsta IV",
+    medium: "Digital Painting",
+    year: "2025",
+    dimensions: "30 × 20 cm",
+    image: `${basePath}/images/forestprint4.001.jpeg`,
+    description: "Furèsta IV, Print, 2025.",
     gridSpan: "md:col-span-1 md:row-span-1",
   }
 ]  
@@ -633,7 +684,7 @@ export default function ExtendedGallery() {
       },
       gallery: {
         headingOil: "Oil Artworks",
-        headingMixed: "Watercolour, Acrylic and Mixed media artworks",
+        headingMixed: "Watercolour, Acrylic and Mixed Media Artworks",
         headingPrints: "Prints",
         // descriptionOil: "Oil artworks.",
         // descriptionMixed: "Watercolour, Acrylic and Mixed media artworks.",
@@ -646,7 +697,7 @@ export default function ExtendedGallery() {
         extendedGallery: "Portfolio",
       },
       gallery: {
-        headingOil: "Pittura ad Olio",
+        headingOil: "Dipinti ad Olio",
         headingMixed: "Acquarelli, Acrilici e Tecniche Miste",
         headingPrints: "Stampe",
         // descriptionOil: "Oil artworks.",
@@ -717,9 +768,22 @@ export default function ExtendedGallery() {
               <Link href="/" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
                 {t[lang].nav.home}
               </Link>
-              <Link href="/extended-gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display">
-                {t[lang].nav.extendedGallery}
-              </Link>
+              <div className="relative group">
+                <Link href="/extended-gallery" className="text-sm uppercase tracking-wider hover:text-gray-600 transition-colors font-display inline-block">
+                  {t[lang].nav.extendedGallery}
+                </Link>
+                <div className="absolute left-0 w-48 bg-white border border-gray-100 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-300 z-50">
+                    <a href="#gallery" className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100 font-display">
+                    {lang === 'en' ? 'Oil Paintings' : 'Dipinti ad Olio'}
+                    </a>
+                    <a href="#gallery-mixed" className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100 font-display">
+                    {lang === 'en' ? 'Watercolours, Acrylics, Mixed Media' : 'Acquarelli, Acrilici e Tecniche Miste'}
+                    </a>
+                    <a href="#gallery-prints" className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100 font-display">
+                    {lang === 'en' ? 'Prints' : 'Stampe'}
+                    </a>
+                </div>
+              </div>
               {/* Language Switcher */}
               <button
                 className="ml-4 flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none"
@@ -741,9 +805,16 @@ export default function ExtendedGallery() {
               <Link href="/" className="block text-sm uppercase tracking-wider font-display">
                 {t[lang].nav.home}
               </Link>
-              <Link href="/extended-gallery" className="block text-sm uppercase tracking-wider font-display">
-                {t[lang].nav.extendedGallery}
-              </Link>
+              <div className="space-y-1">
+                <Link href="/extended-gallery" className="block text-sm uppercase tracking-wider font-display">
+                  {t[lang].nav.extendedGallery}
+                </Link>
+                <div className="pl-4 flex flex-col space-y-1">
+                  <a href="#gallery" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Oil Paintings</a>
+                  <a href="#gallery-mixed" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Mixed Media</a>
+                  <a href="#gallery-prints" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Prints</a>
+                </div>
+              </div>
               {/* Language Switcher */}
               <button
                 className="flex items-center text-gray-700 hover:text-gray-900 transition-colors focus:outline-none mt-2"
@@ -768,6 +839,15 @@ export default function ExtendedGallery() {
             <p className="text-lg md:text-xl font-display text-white/80 mb-6 max-w-2xl mx-auto">
               {/* You can add a translated subtitle here if needed */}
             </p>
+            <Link href="/">
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="border-white text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-transparent font-display tracking-wider"
+                        >
+                          Home
+                        </Button>
+            </Link>
           </div>
         </section>
         {/* style={{ backgroundColor: "#f0ebdf" }} */}
