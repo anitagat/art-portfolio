@@ -864,7 +864,7 @@ export default function ExtendedGallery() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
                 backgroundSize: '70%',
-                opacity: 0.18,
+                opacity: 0.8,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
             />
@@ -912,11 +912,11 @@ export default function ExtendedGallery() {
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
-                backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+                backgroundImage: `url('${basePath}/images/venere_background.png')`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
                 backgroundSize: '70%',
-                opacity: 0.18,
+                opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
             />
@@ -964,11 +964,11 @@ export default function ExtendedGallery() {
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
-                backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+                backgroundImage: `url('${basePath}/images/hug_background.png')`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center 10%',
-                backgroundSize: '70%',
-                opacity: 0.18,
+                backgroundPosition: 'center 40%',
+                backgroundSize: '100%',
+                opacity: 0.3,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
             />

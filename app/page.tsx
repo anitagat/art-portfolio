@@ -486,11 +486,11 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full z-0 pointer-events-none"
             aria-hidden="true"
             style={{
-              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+              backgroundImage: `url('${basePath}/images/tropical_background.png')`,
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center 10%',
-              backgroundSize: '70%',
-              opacity: 0.18,
+              backgroundPosition: 'center 50%',
+              backgroundSize: '90%',
+              opacity: 0.15,
               filter: 'grayscale(0%) blur(0.5px)',
             }}
           />
@@ -539,7 +539,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 w-full h-full z-0"
           style={{
-            backgroundImage: `url('${basePath}/images/liquid.jpg')`,
+            backgroundImage: `url('${basePath}/images/birthofcosmos.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.4, // Adjust for desired opacity
