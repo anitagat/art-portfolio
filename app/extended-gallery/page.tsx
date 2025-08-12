@@ -683,7 +683,7 @@ export default function ExtendedGallery() {
         extendedGallery: "Portfolio",
       },
       gallery: {
-        headingOil: "Oil Artworks",
+        headingOil: "Oil Paintings",
         headingMixed: "Watercolour, Acrylic and Mixed Media Artworks",
         headingPrints: "Prints",
         // descriptionOil: "Oil artworks.",
@@ -810,9 +810,15 @@ export default function ExtendedGallery() {
                   {t[lang].nav.extendedGallery}
                 </Link>
                 <div className="pl-4 flex flex-col space-y-1">
-                  <a href="#gallery" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Oil Paintings</a>
-                  <a href="#gallery-mixed" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Mixed Media</a>
-                  <a href="#gallery-prints" className="block text-xs text-gray-700 hover:text-gray-900 font-display">Prints</a>
+                  <a href="#gallery" className="block text-xs text-gray-700 hover:text-gray-900 font-display">
+                    {lang === 'en' ? 'Oil Paintings' : 'Dipinti ad Olio'}
+                  </a>
+                  <a href="#gallery-mixed" className="block text-xs text-gray-700 hover:text-gray-900 font-display">
+                    {lang === 'en' ? 'Watercolours, Acrylics, Mixed Media' : 'Acquarelli, Acrilici e Tecniche Miste'}
+                  </a>
+                  <a href="#gallery-prints" className="block text-xs text-gray-700 hover:text-gray-900 font-display">
+                    {lang === 'en' ? 'Prints' : 'Stampe'}
+                  </a>
                 </div>
               </div>
               {/* Language Switcher */}
@@ -964,10 +970,10 @@ export default function ExtendedGallery() {
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
-                backgroundImage: `url('${basePath}/images/hug_background.png')`,
+                backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center 40%',
-                backgroundSize: '100%',
+                backgroundPosition: 'center 10%',
+                backgroundSize: '70%',
                 opacity: 0.3,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}

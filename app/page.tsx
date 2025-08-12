@@ -92,11 +92,11 @@ export default function HomePage() {
       hero: {
         title: "Anita Gattei",
         subtitle: "Visual Art",
-        tagline: "Natural elements echoing through colourful dreams.",
+        tagline: "Ecospheres and Microcosms",
       },
       gallery: {
-        heading: "Selected Artworks",
-        description: "A curated selection of paintings and mixed media works exploring themes of movement, emotion, and the relationship between abstract and figurative expression.",
+        heading: "First glances",
+        description: "A curated selection of paintings and mixed media works exploring the relationship between human and botanical elements, and between abstract and figurative expression.",
       },
       about: {
         heading: "About",
@@ -142,16 +142,16 @@ export default function HomePage() {
       hero: {
         title: "Anita Gattei",
         subtitle: "Arte Visiva",
-        tagline: "Elementi naturali che riecheggiano attraverso sogni colorati.",
+        tagline: "Ecosfere e Microcosmi",
       },
       gallery: {
-        heading: "Opere Selezionate",
-        description: "Una selezione curata di dipinti e opere su carta che esplorano il movimento, l'emozione e il rapporto tra espressione astratta e figurativa.",
+        heading: "Primi Sguardi",
+        description: "Una selezione di dipinti che esplorano il rapporto tra elementi umani e botanici, e tra componenti astratte e figurative.",
       },
       about: {
         heading: "Sull'artista",
         p1: "Il mio lavoro esplora la relazione dinamica tra colore, forma ed espressione emotiva. Lavorando principalmente con olio, acquerelli e tecniche miste, i miei dipinti cercano di catturare la natura fluida e organica dell'esperienza umana attraverso composizioni astratte e semi-figurative.",
-        p2: "Ricche di elementi botanici, le mie opere riflettono spesso il desiderio intimo di sentirsi immersi nella natura, trasformando il micro in macro. Non temo l'uso di palette audaci e forme organiche fluide, per esplorare in profondità gli aspetti psicologici della percezione visiva.",
+        p2: "Ricche di elementi botanici, le mie opere riflettono spesso il desiderio intimo di sentirsi immersi nella natura, trasformando il micro in macro. Non temo l'uso di palette audaci e forme organiche fluide, per esplorare gli effetti psicologici della percezione visiva.",
         p3: "Il mio lavoro è profondamente ispirato da Georgia O'Keeffe, la cui capacità di elevare i motivi naturali in forme astratte influenza il mio modo di vedere il mondo.",
       },
       contact: {
@@ -184,7 +184,7 @@ export default function HomePage() {
   const basePath = '/art-portfolio';
   const artworks = [
     {
-      id: 3,
+      id: 1,
       title: "Recognition",
       medium: "Oil on Canvas",
       year: "2018",
@@ -204,7 +204,7 @@ export default function HomePage() {
       gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
-      id: 1,
+      id: 3,
       title: "Liquid Dreams",
       medium: "Oil on Canvas",
       year: "2019",
@@ -214,7 +214,7 @@ export default function HomePage() {
       gridSpan: "md:col-span-1 md:row-span-2",
     },
     {
-      id: 2,
+      id: 4,
       title: "The Hug",
       medium: "Oil on Canvas",
       year: "2025",
@@ -486,11 +486,11 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full z-0 pointer-events-none"
             aria-hidden="true"
             style={{
-              backgroundImage: `url('${basePath}/images/tropical_background.png')`,
+              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center 50%',
+              backgroundPosition: 'center 10%',
               backgroundSize: '90%',
-              opacity: 0.15,
+              opacity: 0.6,
               filter: 'grayscale(0%) blur(0.5px)',
             }}
           />
@@ -553,13 +553,13 @@ export default function HomePage() {
             <div>
               <h2 className="text-4xl md:text-5xl font-display italic mb-8" style={{ color: "#0E0E55" }}>{t[lang].about.heading}</h2>
                 <div className="space-y-6 text-lg text-gray-800 leading-relaxed font-display font-light" style={{ color: "#0E0E48" }}>
-                <p className="text-left">
+                <p className="text-left font-thin" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif', fontWeight: 200 }}>
                   {t[lang].about.p1}
                 </p>
-                <p className="text-left">
+                <p className="text-left font-thin" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif', fontWeight: 200 }}>
                   {t[lang].about.p2}
                 </p>
-                <p className="text-left">
+                <p className="text-left font-thin" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif', fontWeight: 200 }}>
                   {t[lang].about.p3}
                 </p>
               </div>
@@ -657,7 +657,7 @@ export default function HomePage() {
                 <h3 className="text-2xl font-light mb-6 font-display">{t[lang].contact.contactInfo}</h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:elena@elenarossi.art"
+                    href="mailto:anita.gattei@gmail.com"
                     className="flex items-center space-x-3 text-lg hover:text-gray-300 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
