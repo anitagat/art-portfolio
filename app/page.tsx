@@ -276,12 +276,12 @@ export default function HomePage() {
     },
     {
       id: 10,
-      title: "Emotional Landscapes",
+      title: "Venere",
       medium: "Mixed Media",
       year: "2019",
       dimensions: "30 × 15 cm",
       image:  `${basePath}/images/venere.jpg`,
-      description: "Emotional Landscapes, Mixed Media, 2019.",
+      description: "Venere, Mixed Media, 2019.",
       gridSpan: "md:col-span-1 md:row-span-1",
     },
     {
@@ -594,7 +594,7 @@ export default function HomePage() {
               </motion.div>
             ))}
             {/* Add a button at the end of the gallery */}
-            <div className="col-span-full flex justify-center mt-8">
+            <div className="col-span-full flex justify-center mt-2">
               <Link href="/extended-gallery">
               <Button
                 variant="outline"
