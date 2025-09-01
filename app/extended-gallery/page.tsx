@@ -870,7 +870,7 @@ export default function ExtendedGallery() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
                 backgroundSize: '70%',
-                opacity: 0.8,
+                opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
             />
@@ -1012,6 +1012,18 @@ export default function ExtendedGallery() {
               ))}
             </div>
           </div>
+          {/* Add a button at the end of the gallery */}
+            <div className="col-span-full flex justify-center mt-8">
+              <Link href="/">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-[#0a1931] text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-[#0a1931] font-display tracking-wider"
+              >
+                Home
+              </Button>
+              </Link>
+            </div>
         </section>
 
         {/* Modal rendered once at root */}

@@ -592,6 +592,18 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
+            {/* Add a button at the end of the gallery */}
+            <div className="col-span-full flex justify-center mt-8">
+              <Link href="/extended-gallery">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-[#0a1931] text-white hover:bg-white hover:text-[#0a1931] transition-all duration-300 bg-[#0a1931] font-display tracking-wider"
+              >
+                {t[lang].nav.viewPortfolio}
+              </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>           
