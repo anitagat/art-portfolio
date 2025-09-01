@@ -49,32 +49,33 @@ export default function HomePage() {
   }, [selectedImageIndex])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const name = formData.get("name") as string
-    const email = formData.get("email") as string
-    const subject = formData.get("subject") as string
-    const message = formData.get("message") as string
-    const inquiryType = formData.get("inquiryType") as string
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const getString = (fd: FormData, key: string) => {
+      const val = fd.get(key);
+      return typeof val === "string" ? val.trim() : "";
+    };
+    const name = getString(formData, "name");
+    // Try to get email from the form, fallback to empty string if not present
+    let email = "";
+    if (formData.has("email")) {
+      email = getString(formData, "email");
+    }
+    const subject = getString(formData, "subject");
+    const message = getString(formData, "message");
+    const inquiryType = getString(formData, "inquiryType");
 
     // Basic validation
-    if (!name || !email || !message) {
-      alert("Please fill in all required fields.")
-      return
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.")
-      return
+    if (!name || !message) {
+      alert("Please fill in all required fields.");
+      return;
     }
 
     // Construct mailto link
     const mailto = `mailto:anita.gattei@gmail.com?subject=${encodeURIComponent(subject || inquiryType)}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nType of Inquiry: ${inquiryType}\n\n${message}`
-    )}`
-    window.location.href = mailto
+      `Name/Nome: ${name}\n Type of Inquiry/Tipo di Richiesta: ${inquiryType}\n\n${message}`
+    )}`;
+    window.location.href = mailto;
   }
 
 
