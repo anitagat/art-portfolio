@@ -96,8 +96,8 @@ export default function HomePage() {
         tagline: "Visual Art",
       },
       gallery: {
-        heading: "First glances",
-        description: "A curated selection of paintings and mixed media works exploring the relationship between human and botanical elements, and between abstract and figurative expression.",
+        heading: "Prelude to Vision",
+        description: "As I paint, I follow the softness of gestures and shapes. I like the bodies to float, weightless, with grace, as though cradled by the petal of a flower.",
       },
       about: {
         heading: "About me",
@@ -146,8 +146,8 @@ export default function HomePage() {
         tagline: "Arti Visive",
       },
       gallery: {
-        heading: "Primi Sguardi",
-        description: "Una selezione di dipinti che esplorano il rapporto tra elementi umani e botanici, e tra componenti astratte e figurative.",
+        heading: "Preludio allo sguardo",
+        description: "Quando dipingo inseguo la flessibilità dei movimenti, delle forme. Mi piace che i corpi siano sospesi, con dolcezza, come se fossero stesi sul petalo di un fiore.",
       },
       about: {
         heading: "Su di me",
@@ -434,7 +434,7 @@ export default function HomePage() {
               onClick={() => setLang(lang === 'en' ? 'it' : 'en')}
             >
               <Globe className="w-5 h-5 mr-1" />
-              <span className="text-xs font-display uppercase">{lang === 'en' ? 'IT' : 'EN'}</span>
+              <span className="text-xs font-display uppercase">{lang === 'it' ? 'IT' : 'EN'}</span>
             </button>
           </div>
         )}
@@ -543,18 +543,18 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Section - Masonry Layout */}
-      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+      <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#F8F8F5" }}>
         <div className="max-w-7xl mx-auto relative">
           {/* Decorative Flowers Background */}
           <div
             className="absolute inset-0 w-full h-full z-0 pointer-events-none"
             aria-hidden="true"
             style={{
-              backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+              backgroundImage: `url('${basePath}/images/bqckgundimag_ghosts.jpg')`,
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center 10%',
-              backgroundSize: '90%',
-              opacity: 0.6,
+              backgroundPosition: 'center 50%',
+              backgroundSize: '95%',
+              opacity: 0.7,
               filter: 'grayscale(0%) blur(0.5px)',
             }}
           />

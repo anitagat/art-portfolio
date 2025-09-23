@@ -859,17 +859,17 @@ export default function ExtendedGallery() {
         {/* style={{ backgroundColor: "#f0ebdf" }} */}
 
         {/* OIL Gallery Section - Masonry Layout */}
-        <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+        <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
             {/* Decorative Flowers Background */}
             <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
-                backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+                backgroundImage: `url('${basePath}/images/bqckgundimag.jpg')`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
-                backgroundSize: '70%',
+                backgroundSize: '95%',
                 opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
@@ -911,17 +911,25 @@ export default function ExtendedGallery() {
         </section>
 
         {/* MIXED MEDIA Gallery Section - Masonry Layout */}
-        <section id="gallery-mixed" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+        <section id="gallery-mixed" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
             {/* Decorative Flowers Background */}
             <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
+              // style={{
+              //   backgroundImage: `url('${basePath}/images/venere_backnofill.png')`,
+              //   backgroundRepeat: 'no-repeat',
+              //   backgroundPosition: 'center 10%',
+              //   backgroundSize: '70%',
+              //   opacity: 0.7,
+              //   filter: 'grayscale(0%) blur(0.5px)',
+              // }}
               style={{
-                backgroundImage: `url('${basePath}/images/venere_backnofill.png')`,
+                backgroundImage: `url('${basePath}/images/bqckgundimag_swift.jpg')`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
-                backgroundSize: '70%',
+                backgroundSize: '95%',
                 opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
@@ -963,14 +971,14 @@ export default function ExtendedGallery() {
         </section>
 
         {/* PRINTS Gallery Section - Masonry Layout */}
-        <section id="gallery-prints" className="py-20 px-6" style={{ backgroundColor: "#FFFFFA" }}>
+        <section id="gallery-prints" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
-            {/* Decorative Flowers Background */}
+            {/* Decorative Background */}
             <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
-                backgroundImage: `url('${basePath}/images/deco_flowers.png')`,
+                backgroundImage: `url('${basePath}/images/bqckgundimag_seafish.jpg')`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center 10%',
                 backgroundSize: '70%',
