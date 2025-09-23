@@ -546,7 +546,7 @@ export default function HomePage() {
       <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#F8F8F5" }}>
         <div className="max-w-7xl mx-auto relative">
           {/* Decorative Flowers Background */}
-          <div
+          {/* <div
             className="absolute inset-0 w-full h-full z-0 pointer-events-none"
             aria-hidden="true"
             style={{
@@ -557,7 +557,7 @@ export default function HomePage() {
               opacity: 0.7,
               filter: 'grayscale(0%) blur(0.5px)',
             }}
-          />
+          /> */}
           <div className="text-center mb-16 relative z-10">
             <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.heading}</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-display" style={{ color: "#0E0E50" }}>
