@@ -862,7 +862,7 @@ export default function ExtendedGallery() {
         <section id="gallery" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
             {/* Decorative Flowers Background */}
-            <div
+            {/* <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
@@ -873,7 +873,7 @@ export default function ExtendedGallery() {
                 opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
-            />
+            /> */}
             <div className="text-center mb-16 relative z-10">
               <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.headingOil}</h2>
             </div>
@@ -914,7 +914,7 @@ export default function ExtendedGallery() {
         <section id="gallery-mixed" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
             {/* Decorative Flowers Background */}
-            <div
+            {/* <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               // style={{
@@ -933,7 +933,7 @@ export default function ExtendedGallery() {
                 opacity: 0.7,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
-            />
+            /> */}
             <div className="text-center mb-16 relative z-10">
               <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.headingMixed}</h2>
             </div>
@@ -974,7 +974,7 @@ export default function ExtendedGallery() {
         <section id="gallery-prints" className="py-20 px-6" style={{ backgroundColor: "#f8f8f5" }}>
           <div className="max-w-7xl mx-auto relative">
             {/* Decorative Background */}
-            <div
+            {/* <div
               className="absolute inset-0 w-full h-full z-0 pointer-events-none"
               aria-hidden="true"
               style={{
@@ -985,7 +985,7 @@ export default function ExtendedGallery() {
                 opacity: 0.3,
                 filter: 'grayscale(0%) blur(0.5px)',
               }}
-            />
+            /> */}
             <div className="text-center mb-16 relative z-10">
               <h2 className="text-4xl md:text-5xl font-display italic mb-6" style={{color:"#000066"}}>{t[lang].gallery.headingPrints}</h2>
             </div>
